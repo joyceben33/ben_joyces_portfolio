@@ -18,9 +18,9 @@
       <v-icon>mdi-face</v-icon>
       <h3>About</h3>
     </v-btn>
-    <v-btn text>
+    <v-btn href="#portfolio" text>
       <v-icon>mdi-laptop</v-icon>
-      <h3>Projects</h3>
+      <h3>Portfolio</h3>
     </v-btn>
     <v-btn text>
       <v-icon>mdi-cellphone-iphone</v-icon>
