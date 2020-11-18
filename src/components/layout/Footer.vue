@@ -53,7 +53,7 @@ import Component from 'vue-class-component';
 import { mdiFacebook, mdiGithub, mdiLinkedin } from '@mdi/js';
 
 @Component({})
-export default class footer extends Vue {
+export default class Footer extends Vue {
   mdiFacebook = mdiFacebook;
 
   mdiGithub = mdiGithub;

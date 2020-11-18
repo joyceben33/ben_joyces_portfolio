@@ -3,7 +3,7 @@
     <Header />
     <v-main>
       <Hero />
-      <HelloWorld />
+      <About />
     </v-main>
     <Footer />
   </v-app>
@@ -15,14 +15,14 @@ import Component from 'vue-class-component';
 import Header from './components/layout/Header.vue';
 import Footer from './components/layout/Footer.vue';
 import Hero from './components/Hero.vue';
-import HelloWorld from './components/HelloWorld.vue';
+import About from './components/About.vue';
 
 @Component({
   components: {
     Header,
     Footer,
     Hero,
-    HelloWorld,
+    About,
   },
 })
 export default class App extends Vue {}

@@ -14,7 +14,7 @@
 
     <v-spacer></v-spacer>
 
-    <v-btn text>
+    <v-btn href="#about" text>
       <v-icon>mdi-face</v-icon>
       <h3>About</h3>
     </v-btn>

@@ -14,11 +14,11 @@
                 initial-action="typing"
                 :pre-type-delay="70"
                 :type-delay="70"
-                :pre-erase-delay="2000"
-                :erase-delay="250"
+                :pre-erase-delay="3000"
+                :erase-delay="150"
                 erase-style="backspace"
                 :erase-on-complete="false"
-                caret-animation="blink"
+                caret-animation="smooth"
               />
             </v-col>
           </v-row>
@@ -47,6 +47,10 @@ h1 {
   color: #ffffff;
   font-size: 2em;
   font-weight: bolder;
+}
+
+.vue-typer .custom.caret {
+  background-color: #ffffff;
 }
 </style>
 
