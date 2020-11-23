@@ -5,6 +5,7 @@
       <Hero />
       <About />
       <Portfolio />
+      <Contact />
     </v-main>
     <Footer />
   </v-app>
@@ -18,6 +19,7 @@ import Footer from './components/layout/Footer.vue';
 import Hero from './components/Hero.vue';
 import About from './components/About.vue';
 import Portfolio from './components/Portfolio.vue';
+import Contact from './components/Contact.vue';
 
 @Component({
   components: {
@@ -26,6 +28,7 @@ import Portfolio from './components/Portfolio.vue';
     Hero,
     About,
     Portfolio,
+    Contact,
   },
 })
 export default class App extends Vue {}
