@@ -14,15 +14,15 @@
 
     <v-spacer></v-spacer>
 
-    <v-btn href="#about" text>
+    <v-btn @click="scrollTo('#about')" text>
       <v-icon>mdi-face</v-icon>
       <h3>About</h3>
     </v-btn>
-    <v-btn href="#portfolio" text>
+    <v-btn @click="scrollTo('#portfolio')" text>
       <v-icon>mdi-laptop</v-icon>
       <h3>Portfolio</h3>
     </v-btn>
-    <v-btn text>
+    <v-btn @click="scrollTo('#contact')" text>
       <v-icon>mdi-cellphone-iphone</v-icon>
       <h3>Contact</h3>
     </v-btn>
@@ -42,6 +42,12 @@
 import Vue from 'vue';
 import Component from 'vue-class-component';
 
-@Component({})
-export default class Header extends Vue {}
+@Component({
+  components: {},
+})
+export default class Header extends Vue {
+  scrollTo(id: string) {
+    this.$vuetify.goTo(id, { duration: 1000, offset: 0, easing: 'easeInOutCubic' });
+  }
+}
 </script>
