@@ -30,7 +30,7 @@
 a {
   text-decoration: none;
   &:hover {
-    color: #303030 !important;
+    color: #ffffff !important;
   }
 }
 </style>
