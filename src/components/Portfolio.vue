@@ -5,9 +5,9 @@
         <v-col class="text-center" cols="12" md="12" lg="12" xl="12">
           <h2>Portfolio</h2>
         </v-col>
-        <v-col v-for="project in portfolio.projects" :key="project.id" cols="12" sm="6" md="4" lg="3">
+        <v-col v-for="project in portfolio.projects" :key="project.id" cols="12" sm="6" md="6" lg="6" xl="4">
           <v-card :href="project.deploy_link" target="_blank" hover outlined height="100%">
-            <v-img :src="require(`../assets/${project.preview_img}`)"></v-img>
+            <v-img :src="require(`../assets/${project.preview_img}`)" height="250px"></v-img>
             <v-card-title>{{ project.project_name }}</v-card-title>
             <v-card-text>{{ project.project_description }}</v-card-text>
             <v-divider class="mx-4"></v-divider>
