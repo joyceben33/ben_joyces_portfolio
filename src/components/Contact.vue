@@ -26,14 +26,7 @@
   </section>
 </template>
 
-<style lang="scss">
-a {
-  text-decoration: none;
-  &:hover {
-    color: #ffffff !important;
-  }
-}
-</style>
+<style lang="scss"></style>
 
 <script lang="ts">
 import Vue from 'vue';

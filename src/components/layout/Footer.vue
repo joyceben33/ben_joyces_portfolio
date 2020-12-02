@@ -34,6 +34,7 @@
     transition: opacity 0.3s ease;
     &:hover {
       opacity: 1;
+      color: #ffffff !important;
     }
   }
 }
