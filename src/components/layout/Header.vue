@@ -35,6 +35,20 @@
 
 #profile-name {
   padding-left: 10px;
+  padding-top: 20px;
+}
+
+.v-app-bar {
+  a,
+  button {
+    opacity: 0.7;
+    will-change: opacity;
+    transition: opacity 0.3s ease;
+    &:hover {
+      opacity: 1;
+      color: #ffffff !important;
+    }
+  }
 }
 </style>
 
@@ -47,7 +61,7 @@ import Component from 'vue-class-component';
 })
 export default class Header extends Vue {
   scrollTo(id: string) {
-    this.$vuetify.goTo(id, { duration: 1000, offset: 0, easing: 'easeInOutCubic' });
+    this.$vuetify.goTo(id, { duration: 1000, offset: -25, easing: 'easeInOutCubic' });
   }
 }
 </script>
