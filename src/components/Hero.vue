@@ -8,12 +8,18 @@
             <v-col>
               <h1>I'm</h1>
               <vue-typer
-                :text="['Software Developer', 'NC State Alumnus', 'Tennis Enthusiast', 'Traveler', 'Outdoorsman']"
+                :text="[
+                  'a Software Developer',
+                  'an NC State Alumnus',
+                  'a Tennis Enthusiast',
+                  'a Traveler',
+                  'an Outdoorsman',
+                ]"
                 :repeat="Infinity"
                 :shuffle="false"
                 initial-action="typing"
-                :pre-type-delay="70"
-                :type-delay="70"
+                :pre-type-delay="1000"
+                :type-delay="100"
                 :pre-erase-delay="3000"
                 :erase-delay="150"
                 erase-style="backspace"
@@ -43,13 +49,8 @@ h1 {
   color: #ffffff;
 }
 
-.vue-typer .custom.char.typed {
-  color: #ffffff;
-  font-size: 2em;
-  font-weight: bolder;
-}
-
 .vue-typer .custom.caret {
+  height: 3rem;
   background-color: #ffffff;
 }
 </style>
