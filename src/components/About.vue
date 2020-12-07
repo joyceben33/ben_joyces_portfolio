@@ -6,11 +6,11 @@
           <h2>About Me</h2>
         </v-col>
       </v-row>
-      <v-row justify="center" align="center">
-        <v-col align-self="center" cols="12" sm="12" md="12" lg="4" xl="2">
+      <v-row class="" justify="center" align="center">
+        <v-col class="flex-grow-0">
           <v-img id="about-profile-img" :src="require('../assets/bnw_profile.jpeg')" max-width="350px"></v-img>
         </v-col>
-        <v-col align-self="center" cols="12" sm="12" md="12" lg="6" xl="6">
+        <v-col class="myBio">
           <p>
             I have always been fascinated by technology and became a huge Apple fan-boy exemplified by jailbreaking my
             iPhone when I was 12. My two older brothers created a technology-focused startup that only furthered my
@@ -28,6 +28,10 @@
 <style lang="scss">
 #about-profile-img {
   border-radius: 50%;
+}
+.myBio {
+  min-width: 500px;
+  max-width: 750px;
 }
 </style>
 
