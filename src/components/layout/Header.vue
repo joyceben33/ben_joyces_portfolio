@@ -31,9 +31,9 @@
     <div class="hidden-lg-and-up">
       <v-app-bar-nav-icon default="mdiMenu" @click.stop="toggleMobileDrawer()"></v-app-bar-nav-icon>
       <v-overlay @click.native="toggleMobileDrawer()" :value="mobileDrawer"></v-overlay>
-      <v-navigation-drawer v-model="mobileDrawer" app fixed hide-overlay right>
+      <v-navigation-drawer v-model="mobileDrawer" app fixed hide-overlay right temporary>
         <v-list>
-          <v-list-item @click="scrollTo('#about')">
+          <v-list-item @click="mobileScrollTo('#about')">
             <v-list-item-icon>
               <v-icon>mdi-face</v-icon>
             </v-list-item-icon>
@@ -41,7 +41,7 @@
               <v-list-item-title>About</v-list-item-title>
             </v-list-item-content>
           </v-list-item>
-          <v-list-item @click="scrollTo('#portfolio')">
+          <v-list-item @click="mobileScrollTo('#portfolio')">
             <v-list-item-icon>
               <v-icon>mdi-laptop</v-icon>
             </v-list-item-icon>
@@ -49,7 +49,7 @@
               <v-list-item-title>Portfolio</v-list-item-title>
             </v-list-item-content>
           </v-list-item>
-          <v-list-item @click="scrollTo('#contact')">
+          <v-list-item @click="mobileScrollTo('#contact')">
             <v-list-item-icon>
               <v-icon>mdi-cellphone-iphone</v-icon>
             </v-list-item-icon>
@@ -104,6 +104,10 @@ export default class Header extends Vue {
   mobileDrawer: boolean | null = null;
 
   scrollTo(id: string) {
+    this.$vuetify.goTo(id, { duration: 1000, offset: -25, easing: 'easeInOutCubic' });
+  }
+
+  mobileScrollTo(id: string) {
     this.toggleMobileDrawer();
     this.$vuetify.goTo(id, { duration: 1000, offset: -25, easing: 'easeInOutCubic' });
   }
