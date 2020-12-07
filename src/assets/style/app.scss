@@ -1,4 +1,3 @@
-
 //Headings
 h1 {
   font-family: 'Poppins', sans-serif;
@@ -28,11 +27,10 @@ p {
   font-family: 'Poppins', sans-serif;
   font-size: 3rem;
   line-height: 1;
-  
 }
 
 .vue-typer .custom.char.typed {
-    color: #ffffff;
+  color: #ffffff;
 }
 
 //MY Name
@@ -45,12 +43,12 @@ p {
 
 // Page Sections
 section {
-    padding: 7rem 0;
-    &:nth-child(2n + 1) {
-      background-color: #fafafa;
-    }
-    &.hero {
-      padding-top: calc(7rem + 96px);
-      color: #ffffff;
-    }
+  padding: 2rem 0;
+  &:nth-child(2n + 1) {
+    background-color: #fafafa;
   }
+  &.hero {
+    padding-top: calc(7rem + 96px);
+    color: #ffffff;
+  }
+}
