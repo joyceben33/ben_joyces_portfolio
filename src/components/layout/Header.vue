@@ -31,7 +31,7 @@
     <div class="hidden-lg-and-up">
       <v-app-bar-nav-icon default="mdiMenu" @click.stop="toggleMobileDrawer()"></v-app-bar-nav-icon>
       <v-overlay @click.native="toggleMobileDrawer()" :value="mobileDrawer"></v-overlay>
-      <v-navigation-drawer v-model="mobileDrawer" app fixed hide-overlay right temporary>
+      <v-navigation-drawer light v-model="mobileDrawer" app fixed hide-overlay right temporary>
         <v-list>
           <v-list-item @click="mobileScrollTo('#about')">
             <v-list-item-icon>
@@ -87,6 +87,10 @@
 
 .v-overlay {
   height: 100vh;
+}
+
+.v-app-bar {
+  padding-top: 0.5rem;
 }
 </style>
 
