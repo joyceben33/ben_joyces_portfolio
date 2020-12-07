@@ -11,6 +11,18 @@
   </v-app>
 </template>
 
+<style lang="css" scoped>
+.no-scroll {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  height: 100%;
+  overflow-x: hidden;
+}
+</style>
+
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
