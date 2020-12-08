@@ -30,7 +30,7 @@
   border-radius: 50%;
 }
 .myBio {
-  min-width: 500px;
+  min-width: 380px;
   max-width: 750px;
 }
 </style>
