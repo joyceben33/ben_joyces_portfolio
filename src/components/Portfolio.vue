@@ -5,7 +5,7 @@
         <v-col class="text-center" cols="12" md="12" lg="12" xl="12">
           <h2>Portfolio</h2>
         </v-col>
-        <v-col v-for="project in portfolio.projects" :key="project.id" cols="12" sm="6" md="6" lg="6" xl="4">
+        <v-col v-for="project in portfolio.projects" :key="project.project_name" cols="12" sm="6" md="6" lg="6" xl="4">
           <v-card class="rounded-xl" :href="project.deploy_link" target="_blank" hover outlined height="100%">
             <v-img :src="require(`../assets/${project.preview_img}`)" height="250px"></v-img>
             <v-container>
@@ -14,10 +14,10 @@
               <v-divider class="mx-4"></v-divider>
               <!-- Technologies Used -->
               <v-card-title>Technologies Used:</v-card-title>
-              <v-list-tile-action>
+              <v-card-actions>
                 <v-btn
                   v-for="tech in project.technologies"
-                  :key="tech"
+                  :key="tech.name"
                   :href="tech.docs_link"
                   target="_blank"
                   :title="tech.name"
@@ -26,15 +26,15 @@
                 >
                   <v-icon large>{{ tech.icon }}</v-icon>
                 </v-btn>
-              </v-list-tile-action>
+              </v-card-actions>
               <v-divider class="mx-4"></v-divider>
               <!-- Code Repository -->
               <v-card-title>Code Repository:</v-card-title>
-              <v-list-tile-action>
+              <v-card-actions>
                 <v-btn x-large icon :href="project.repo_link" target="_blank">
                   <v-icon large>{{ mdiGithub }}</v-icon>
                 </v-btn>
-              </v-list-tile-action>
+              </v-card-actions>
             </v-container>
           </v-card>
         </v-col>
