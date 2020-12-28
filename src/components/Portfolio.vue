@@ -6,7 +6,7 @@
           <h2>Portfolio</h2>
         </v-col>
         <v-col v-for="project in portfolio.projects" :key="project.id" cols="12" sm="6" md="6" lg="6" xl="4">
-          <v-card :href="project.deploy_link" target="_blank" hover outlined height="100%">
+          <v-card class="rounded-xl" :href="project.deploy_link" target="_blank" hover outlined height="100%">
             <v-img :src="require(`../assets/${project.preview_img}`)" height="250px"></v-img>
             <v-card-title>{{ project.project_name }}</v-card-title>
             <v-card-text>{{ project.project_description }}</v-card-text>
