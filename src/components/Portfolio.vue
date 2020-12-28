@@ -8,32 +8,34 @@
         <v-col v-for="project in portfolio.projects" :key="project.id" cols="12" sm="6" md="6" lg="6" xl="4">
           <v-card class="rounded-xl" :href="project.deploy_link" target="_blank" hover outlined height="100%">
             <v-img :src="require(`../assets/${project.preview_img}`)" height="250px"></v-img>
-            <v-card-title>{{ project.project_name }}</v-card-title>
-            <v-card-text>{{ project.project_description }}</v-card-text>
-            <v-divider class="mx-4"></v-divider>
-            <!-- Technologies Used -->
-            <v-card-title>Technologies Used:</v-card-title>
-            <v-list-tile-action>
-              <v-btn
-                v-for="tech in project.technologies"
-                :key="tech"
-                :href="tech.docs_link"
-                target="_blank"
-                :title="tech.name"
-                x-large
-                icon
-              >
-                <v-icon large>{{ tech.icon }}</v-icon>
-              </v-btn>
-            </v-list-tile-action>
-            <v-divider class="mx-4"></v-divider>
-            <!-- Code Repository -->
-            <v-card-title>Code Repository:</v-card-title>
-            <v-list-tile-action>
-              <v-btn x-large icon :href="project.repo_link" target="_blank">
-                <v-icon large>{{ mdiGithub }}</v-icon>
-              </v-btn>
-            </v-list-tile-action>
+            <v-container>
+              <v-card-title>{{ project.project_name }}</v-card-title>
+              <v-card-text>{{ project.project_description }}</v-card-text>
+              <v-divider class="mx-4"></v-divider>
+              <!-- Technologies Used -->
+              <v-card-title>Technologies Used:</v-card-title>
+              <v-list-tile-action>
+                <v-btn
+                  v-for="tech in project.technologies"
+                  :key="tech"
+                  :href="tech.docs_link"
+                  target="_blank"
+                  :title="tech.name"
+                  x-large
+                  icon
+                >
+                  <v-icon large>{{ tech.icon }}</v-icon>
+                </v-btn>
+              </v-list-tile-action>
+              <v-divider class="mx-4"></v-divider>
+              <!-- Code Repository -->
+              <v-card-title>Code Repository:</v-card-title>
+              <v-list-tile-action>
+                <v-btn x-large icon :href="project.repo_link" target="_blank">
+                  <v-icon large>{{ mdiGithub }}</v-icon>
+                </v-btn>
+              </v-list-tile-action>
+            </v-container>
           </v-card>
         </v-col>
       </v-row>
