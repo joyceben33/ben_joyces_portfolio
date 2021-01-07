@@ -75,7 +75,7 @@ export default class Portfolio extends Vue {
     projects: [
       {
         project_name: 'Pomona Pipe Products',
-        project_description: `Pomona Pipe Products, Inc. is a civil engineering firm specializing in bridges and environmental construction. The company services a wide range of private businesses, municipalities, and state Departments of Transportation. In my role as a full-stack developer, I have contributed to laying the groundwork for the company’s tech infrastructure. Pomona’s infrastructure consists of a Node API, AWS S3 Buckets, AWS CloudFront CDN, a Headless CMS, Algolia Search Engine, and a server-side rendering web application. In addition I have also helped with the company's SEO on Google and Bing as well as tweaked info on their Google My Business account.`,
+        project_description: `Pomona Pipe Products, Inc. is a civil engineering firm specializing in bridges and environmental construction. The company services a wide range of private businesses, municipalities, and state Departments of Transportation. In my role as a full-stack developer, I helped engineer the company's public-facing web application for marketing their products and services. The stack consists of a Node API, AWS S3 Buckets, AWS CloudFront CDN, a Headless CMS (Prismic.io), Algolia Search Engine, and a server-side rendering web application. In addition I have also worked to improve the company's search engine rankings by optimizing meta data and forming a link-building strategy through social media.`,
         preview_img: 'pomona_screenshot.png',
         deploy_link: 'https://www.pomonasupply.com/',
         repo_link: 'https://github.com/pomona-pipe/pomona-site-v2',
