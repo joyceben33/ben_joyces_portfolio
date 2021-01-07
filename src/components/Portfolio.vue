@@ -75,8 +75,7 @@ export default class Portfolio extends Vue {
     projects: [
       {
         project_name: 'Pomona Pipe Products',
-        project_description:
-          "Pomona Pipe Products, Inc. is a civil engineering firm specializing in bridges and environmental construction. The company services a wide range of private businesses, municipalities, and state Departments of Transportation. In my role as a full-stack developer, I have contributed to laying the groundwork for the company’s tech infrastructure. Pomona’s infrastructure consists of a Node API, AWS S3 Buckets, AWS CloudFront CDN, a Headless CMS, Algolia Search Engine, and a server-side rendering web application. In addition I have also helped with the company's SEO on Google and Bing as well as tweaked info on their Google My Business account.",
+        project_description: `Pomona Pipe Products, Inc. is a civil engineering firm specializing in bridges and environmental construction. The company services a wide range of private businesses, municipalities, and state Departments of Transportation. In my role as a full-stack developer, I have contributed to laying the groundwork for the company’s tech infrastructure. Pomona’s infrastructure consists of a Node API, AWS S3 Buckets, AWS CloudFront CDN, a Headless CMS, Algolia Search Engine, and a server-side rendering web application. In addition I have also helped with the company's SEO on Google and Bing as well as tweaked info on their Google My Business account.`,
         preview_img: 'pomona_screenshot.png',
         deploy_link: 'https://www.pomonasupply.com/',
         repo_link: 'https://github.com/pomona-pipe/pomona-site-v2',
@@ -150,6 +149,36 @@ export default class Portfolio extends Vue {
             name: 'Socket.io',
             icon: mdiFlashCircle,
             docs_link: 'https://socket.io/',
+          },
+        ],
+      },
+      {
+        project_name: 'Homebase',
+        project_description:
+          'An Agile team setting with a group of 9 members and a 4 ½ day sprint cycle, our team was able to provide an MVP version of the application to the client. This MERN Full Stack application provided a fully functional project management software.',
+        preview_img: 'Homebase_group_project.png',
+        deploy_link: 'https://youtube.com/watch?v=2Zg79auMMbo&feature=share',
+        repo_link: 'https://github.com/rachel-fischoff/cohort-8-project',
+        technologies: [
+          {
+            name: 'React.js',
+            icon: mdiReact,
+            docs_link: 'https://reactjs.org/',
+          },
+          {
+            name: 'Javascript',
+            icon: mdiLanguageJavascript,
+            docs_link: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript',
+          },
+          {
+            name: 'MongoDB',
+            icon: mdiDatabase,
+            docs_link: 'https://www.mongodb.com/',
+          },
+          {
+            name: 'Node.js',
+            icon: mdiNodejs,
+            docs_link: 'https://nodejs.org/en/',
           },
         ],
       },
