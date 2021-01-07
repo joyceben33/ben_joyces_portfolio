@@ -1,12 +1,12 @@
 <template>
   <div id="hero" dark>
     <v-img :src="require('../assets/golden_gate_0002.jpeg')" height="500px">
-      <div id="hero-gradient">
+      <div id="hero-gradient" class="d-flex align-center">
         <v-container>
-          <!-- <vue-typer text="HelloWorld"></vue-typer> -->
           <v-row class="text-center">
             <v-col>
-              <h1>I'm</h1>
+              <h1 class="d-md-inline-block">I'm</h1>
+              &nbsp;
               <vue-typer
                 :text="[
                   'a Software Developer',

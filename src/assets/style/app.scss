@@ -1,7 +1,7 @@
 //Headings
 h1 {
   font-family: 'Poppins', sans-serif;
-  font-size: 2.5rem;
+  font-size: 2rem;
   margin-bottom: 1rem;
   line-height: 1.25;
 }
@@ -50,5 +50,14 @@ section {
   &.hero {
     padding-top: calc(7rem + 96px);
     color: #ffffff;
+  }
+}
+
+@media screen and (min-width: 960px) {
+  h1 {
+    font-size: 2.75rem;
+  }
+  .vue-typer {
+    font-size: 2.75rem;
   }
 }
