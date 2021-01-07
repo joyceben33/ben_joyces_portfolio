@@ -8,11 +8,11 @@
       </v-row>
 
       <div class="d-flex justify-center flex-wrap mx-n2">
-        <v-btn class="text-decoration-none ma-2" href="tel:3364550205" elevation="2" rounded large>
+        <v-btn class="text-decoration-none ma-2" href="tel:3364550205" elevation="2" dark rounded large>
           <v-icon class="pr-2">{{ mdiPhone }}</v-icon>
           336&centerdot;455&centerdot;0205
         </v-btn>
-        <v-btn class="text-decoration-none ma-2" href="mailto:joyceben33@gmail.com" elevation="2" rounded large>
+        <v-btn class="text-decoration-none ma-2" href="mailto:joyceben33@gmail.com" elevation="2" dark rounded large>
           <v-icon class="pr-2">{{ mdiEmail }}</v-icon>
           joyceben33@gmail.com
         </v-btn>
