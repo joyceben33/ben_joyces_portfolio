@@ -1,28 +1,27 @@
 <template>
-  <v-app-bar absolute flat color="transparent" dark>
+  <v-app-bar class="pt-0" absolute flat color="transparent" height="85" dark>
     <div>
       <v-img
-        id="profile-pic"
-        alt="Vuetify Logo"
+        class="rounded-circle"
         contain
         :src="require('../../assets/profile_pic001.jpeg')"
         transition="scale-transition"
-        width="54"
+        width="55"
       />
     </div>
-    <h1 id="profile-name">Ben Joyce</h1>
+    <h1 id="profile-name" class="mb-0 ml-2 mt-2">Ben Joyce</h1>
 
     <v-spacer></v-spacer>
     <div id="desktopMenu" class="hidden-md-and-down">
-      <v-btn @click="scrollTo('#about')" text>
+      <v-btn class="rounded-pill" @click="scrollTo('#about')" text>
         <v-icon>mdi-face</v-icon>
         <h3>About</h3>
       </v-btn>
-      <v-btn @click="scrollTo('#portfolio')" text>
+      <v-btn class="rounded-pill" @click="scrollTo('#portfolio')" text>
         <v-icon>mdi-laptop</v-icon>
         <h3>Portfolio</h3>
       </v-btn>
-      <v-btn @click="scrollTo('#contact')" text>
+      <v-btn class="rounded-pill" @click="scrollTo('#contact')" text>
         <v-icon>mdi-cellphone-iphone</v-icon>
         <h3>Contact</h3>
       </v-btn>
@@ -63,15 +62,6 @@
   </v-app-bar>
 </template>
 <style lang="scss">
-#profile-pic {
-  border-radius: 50%;
-}
-
-#profile-name {
-  padding-left: 10px;
-  padding-top: 20px;
-}
-
 .v-app-bar {
   a,
   button {
