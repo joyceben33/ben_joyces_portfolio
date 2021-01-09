@@ -9,13 +9,7 @@
                 I'm&nbsp;
                 <vue-typer
                   class="d-block d-sm-inline"
-                  :text="[
-                    'a Software Developer',
-                    'an NC State Alumnus',
-                    'a Tennis Enthusiast',
-                    'a Traveler',
-                    'an Outdoorsman',
-                  ]"
+                  :text="['a Web Developer', 'an NC State Alum', 'a Tennis Enthusiast', 'a Traveler', 'an Outdoorsman']"
                   :repeat="Infinity"
                   :shuffle="false"
                   initial-action="typing"
