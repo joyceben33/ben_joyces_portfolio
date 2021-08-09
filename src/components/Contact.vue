@@ -10,7 +10,7 @@
       <div class="d-flex justify-center flex-wrap mx-n2">
         <v-btn
           class="text-decoration-none ma-2"
-          href="https://www.google.com/maps/place/Greensboro,+NC/@36.1001779,-79.9734642,11z/data=!3m1!4b1!4m5!3m4!1s0x8853193f38c77b79:0x93b9c49478be12c8!8m2!3d36.0726354!4d-79.7919754"
+          href="https://www.google.com/maps/place/Charleston,+SC/@32.8212559,-80.1105616,11z/data=!3m1!4b1!4m5!3m4!1s0x88fe7a42dca82477:0x35faf7e0aee1ec6b!8m2!3d32.7764749!4d-79.9310512"
           target="_blank"
           elevation="2"
           dark
@@ -18,7 +18,7 @@
           large
         >
           <v-icon class="pr-2">{{ mdiMapMarker }}</v-icon>
-          Greensboro, NC
+          Charleston, SC
         </v-btn>
         <!-- commented out phone # for privacy -->
         <!-- <v-btn class="text-decoration-none ma-2" href="tel:3364550205" elevation="2" dark rounded large>

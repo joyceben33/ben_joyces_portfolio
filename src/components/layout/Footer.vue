@@ -5,14 +5,14 @@
       <v-row class="text-center">
         <v-col>
           <v-btn x-large icon target="_blank" href="https://www.linkedin.com/in/ben-marlow-joyce/">
-            <v-icon>{{ mdiLinkedin }}</v-icon>
+            <v-icon x-large>{{ mdiLinkedin }}</v-icon>
           </v-btn>
 
           <v-btn x-large icon target="_blank" href="https://github.com/joyceben33">
-            <v-icon>{{ mdiGithub }}</v-icon>
+            <v-icon x-large>{{ mdiGithub }}</v-icon>
           </v-btn>
           <v-btn x-large icon target="_blank" href="https://www.facebook.com/ben.joyce.3363/">
-            <v-icon>{{ mdiFacebook }}</v-icon>
+            <v-icon x-large>{{ mdiFacebook }}</v-icon>
           </v-btn>
         </v-col>
       </v-row>
