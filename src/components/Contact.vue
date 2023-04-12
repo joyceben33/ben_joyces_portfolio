@@ -18,13 +18,8 @@
           large
         >
           <v-icon class="pr-2">{{ mdiMapMarker }}</v-icon>
-          Charleston, SC
+          Raleigh, NC
         </v-btn>
-        <!-- commented out phone # for privacy -->
-        <!-- <v-btn class="text-decoration-none ma-2" href="tel:3364550205" elevation="2" dark rounded large>
-          <v-icon class="pr-2">{{ mdiPhone }}</v-icon>
-          336&centerdot;455&centerdot;0205
-        </v-btn> -->
         <v-btn class="text-decoration-none ma-2" href="mailto:joyceben33@gmail.com" elevation="2" dark rounded large>
           <v-icon class="pr-2">{{ mdiEmail }}</v-icon>
           joyceben33@gmail.com
