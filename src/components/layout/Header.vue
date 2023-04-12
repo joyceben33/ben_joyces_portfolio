@@ -4,9 +4,9 @@
       <v-img
         class="rounded-circle"
         contain
-        :src="require('../../assets/profile_pic001.jpeg')"
+        :src="require('../../assets/profile_pic_square.jpeg')"
         transition="scale-transition"
-        width="55"
+        width="50"
       />
     </div>
     <h1 id="profile-name" class="mb-0 ml-2 mt-2">Ben Joyce</h1>
@@ -14,16 +14,16 @@
     <v-spacer></v-spacer>
     <div id="desktopMenu" class="hidden-md-and-down">
       <v-btn class="rounded-pill" @click="scrollTo('#about')" text>
-        <v-icon>mdi-face</v-icon>
-        <h3>About</h3>
+        <h2 class="nav-menu-item">About</h2>
+        <v-icon>mdi-face-man</v-icon>
       </v-btn>
       <v-btn class="rounded-pill" @click="scrollTo('#portfolio')" text>
+        <h2 class="nav-menu-item">Portfolio</h2>
         <v-icon>mdi-laptop</v-icon>
-        <h3>Portfolio</h3>
       </v-btn>
       <v-btn class="rounded-pill" @click="scrollTo('#contact')" text>
-        <v-icon>mdi-cellphone-iphone</v-icon>
-        <h3>Contact</h3>
+        <h2 class="nav-menu-item">Contact</h2>
+        <v-icon>mdi-cellphone</v-icon>
       </v-btn>
     </div>
     <!-- mobile menu below -->
@@ -81,6 +81,11 @@
 
 .v-app-bar {
   padding-top: 0.5rem;
+}
+
+.nav-menu-item {
+  font-size: 20px;
+  margin: 0px 4px 0px 0px;
 }
 </style>
 
