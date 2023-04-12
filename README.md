@@ -1,5 +1,10 @@
 # ben_joyces_portfolio
 
+### Node Version
+
+Install using NODE version `14`
+
+
 ## Project setup
 ```
 npm install
