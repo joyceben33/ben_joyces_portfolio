@@ -8,16 +8,16 @@
       </v-row>
       <v-row class="" justify="center" align="center">
         <v-col class="flex-grow-0">
-          <v-img id="about-profile-img" :src="require('../assets/bnw_profile.jpeg')" max-width="350px"></v-img>
+          <v-img id="about-profile-img" :src="require('../assets/profile_pic_square.jpeg')" max-width="350px"></v-img>
         </v-col>
         <v-col class="myBio">
           <p>
-            I have always been fascinated by technology and became a huge Apple fan-boy exemplified by jailbreaking my
-            iPhone when I was 12. My two older brothers created a technology-focused startup that only furthered my
-            desire to learn more about technology. This led me to focus my studies at NC State in Information
-            Technology. While in college, I realized that software engineering was my true passion. Upon graduation, I
-            decided to sharpen my software engineering skillset at Project Shift, a 13 week-long immersive full-stack
-            fellowship.
+            I'm a Full Stack Developer with over 3 years of programming experience, having worked on multiple production
+            grade applications in an Agile setting. I've collaborated with UI/UX designers, Product Owners, and other
+            engineers to ensure I'm delivering software that the customer needs or patching critical bug fixes in a
+            timely manner. I consider myself as a supportive and enthusiastic team player, dedicated to streamlining
+            development processes. My mantra is “Work smarter not harder”. Outside of work I enjoy hitting tennis,
+            weight training, & watching / attending NC State Athletic Events.
           </p>
         </v-col>
       </v-row>

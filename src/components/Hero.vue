@@ -9,7 +9,7 @@
                 I'm&nbsp;
                 <vue-typer
                   class="d-block d-sm-inline"
-                  :text="['a Web Developer', 'an NC State Alum', 'a Tennis Enthusiast', 'a Traveler', 'an Outdoorsman']"
+                  :text="vueTypeOptions"
                   :repeat="Infinity"
                   :shuffle="false"
                   initial-action="typing"
@@ -29,6 +29,22 @@
     </v-img>
   </div>
 </template>
+
+<script lang="ts">
+import Vue from 'vue';
+import Component from 'vue-class-component';
+
+@Component({})
+export default class Hero extends Vue {
+  vueTypeOptions = [
+    'a Software Engineer',
+    'an NC State Alum',
+    'a Tennis & Pickleball Player',
+    'a Traveler',
+    'an Outdoorsman',
+  ];
+}
+</script>
 
 <style lang="scss">
 #hero-gradient {
@@ -68,11 +84,3 @@ h1 {
   }
 }
 </style>
-
-<script lang="ts">
-import Vue from 'vue';
-import Component from 'vue-class-component';
-
-@Component({})
-export default class Hero extends Vue {}
-</script>
