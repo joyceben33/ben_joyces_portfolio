@@ -7,7 +7,7 @@
         </v-col>
         <v-col v-for="project in projects" :key="project.name" cols="12" sm="12" md="6" lg="6" xl="4">
           <v-card class="rounded-xl" :href="project.deployLink" target="_blank" hover outlined height="100%">
-            <v-img :src="require(`../assets/${project.image}`)" height="250px"></v-img>
+            <v-img :src="project.image ? require(`../assets/${project.image}`) : ''" height="250px"></v-img>
             <v-container>
               <v-card-title>{{ project.name }}</v-card-title>
               <v-card-text>{{ project.description }}</v-card-text>
@@ -69,6 +69,12 @@ import {
   siGithub,
   siMongodb,
   siSocketdotio,
+  siPostgresql,
+  siAmazonec2,
+  siDocker,
+  siVuedotjs,
+  siQuasar,
+  siRedux,
 } from 'simple-icons';
 /* @ts-ignore no-unused-vars */
 import type { IProject } from '@/types/project';
@@ -77,17 +83,13 @@ import type { IProject } from '@/types/project';
 export default class Portfolio extends Vue {
   projects: IProject[] = [
     {
-      name: 'Pomona Pipe Products',
-      description: `Pomona Pipe Products, Inc. is a civil engineering firm specializing in bridges and environmental construction. The company services a wide range of private businesses, municipalities, and state Departments of Transportation. In my role as a full-stack developer, I helped engineer the company's public-facing web application for marketing their products and services. The stack consists of a Serverless Node API, AWS S3 Buckets, AWS CloudFront CDN, a Headless CMS (Prismic.io), Algolia Search Engine, and a server-side rendering web application. In addition I have also worked to improve the company's search engine rankings by optimizing meta data and forming a link-building strategy through social media.`,
-      image: 'pomona_screenshot.png',
-      deployLink: 'https://pomonapipeproducts.com/',
-      repoLink: 'https://github.com/pomona-pipe/pomona-site-v2',
+      name: 'Pacific Arc',
+      description:
+        'Pacific Arc, Inc. is an architectual design tool wholesaler. In my role here I helped build an internal web application that provided tools to help with different workflows within the business. Some of the workflows / features I developed were order fulfillment, order analytics, order logistics, & inventory management. In addition to being an engineer on the product team, I also held responsibilities in their dev-ops department. Some of the dev-ops contributions include AWS Cognito & IAM User Management, setting up a CI/CD pipeline, & migrating Docker Image from Linux to Linux 2.',
+      image: 'pacific_arc_screenshot.png',
+      deployLink: 'https://www.pacificarc.us/',
+      repoLink: 'https://github.com/Pacific-Arc',
       technologies: [
-        {
-          name: 'Nuxt.js',
-          icon: siNuxtdotjs.path,
-          docsLink: 'https://nuxtjs.org/',
-        },
         {
           name: 'Typescript',
           icon: siTypescript.path,
@@ -99,14 +101,68 @@ export default class Portfolio extends Vue {
           docsLink: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript',
         },
         {
+          name: 'Vue.js',
+          icon: siVuedotjs.path,
+          docsLink: 'https://vuejs.org/',
+        },
+        {
+          name: 'Quasar',
+          icon: siQuasar.path,
+          docsLink: 'https://quasar.dev/',
+        },
+        {
           name: 'Node.js',
           icon: siNodedotjs.path,
           docsLink: 'https://nodejs.org/en/',
         },
         {
-          name: 'Jest',
-          icon: siJest.path,
-          docsLink: 'https://jestjs.io/',
+          name: 'PostgreSQL',
+          icon: siPostgresql.path,
+          docsLink: 'https://www.postgresql.org/',
+        },
+        {
+          name: 'AWS Lambda',
+          icon: siAwslambda.path,
+          docsLink: 'https://aws.amazon.com/lambda/',
+        },
+        {
+          name: 'AWS S3',
+          icon: siAmazons3.path,
+          docsLink: 'https://aws.amazon.com/s3/',
+        },
+        {
+          name: 'AWS EC2',
+          icon: siAmazonec2.path,
+          docsLink: 'https://aws.amazon.com/ec2/',
+        },
+        {
+          name: 'Docker',
+          icon: siDocker.path,
+          docsLink: 'https://www.docker.com/',
+        },
+      ],
+    },
+    {
+      name: 'Pomona Pipe Products',
+      description: `Pomona Pipe Products, Inc. is a civil engineering firm specializing in bridges and environmental construction. The company services a wide range of private businesses, municipalities, and state Departments of Transportation. In my role as a full-stack developer, I helped engineer the company's public-facing web application for marketing their products and services. The stack consists of a Serverless Node API, AWS S3 Buckets, AWS CloudFront CDN, a Headless CMS (Prismic.io), Algolia Search Engine, and a server-side rendering web application. In addition I have also worked to improve the company's search engine rankings by optimizing meta data and forming a link-building strategy through social media.`,
+      image: 'pomona_screenshot.png',
+      deployLink: 'https://pomonapipeproducts.com/',
+      repoLink: 'https://github.com/pomona-pipe/',
+      technologies: [
+        {
+          name: 'Typescript',
+          icon: siTypescript.path,
+          docsLink: 'https://www.typescriptlang.org/',
+        },
+        {
+          name: 'Javascript',
+          icon: siJavascript.path,
+          docsLink: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript',
+        },
+        {
+          name: 'Nuxt.js',
+          icon: siNuxtdotjs.path,
+          docsLink: 'https://nuxtjs.org/',
         },
         {
           name: 'Vuetify.js',
@@ -114,19 +170,39 @@ export default class Portfolio extends Vue {
           docsLink: 'https://vuetifyjs.com/en/',
         },
         {
+          name: 'Jest',
+          icon: siJest.path,
+          docsLink: 'https://jestjs.io/',
+        },
+        {
+          name: 'Node.js',
+          icon: siNodedotjs.path,
+          docsLink: 'https://nodejs.org/en/',
+        },
+        {
           name: 'Serverless',
           icon: siServerless.path,
           docsLink: 'https://www.serverless.com/cloud/docs',
         },
         {
-          name: 'Lambda',
+          name: 'AWS Lambda',
           icon: siAwslambda.path,
           docsLink: 'https://aws.amazon.com/lambda/',
         },
         {
-          name: 'S3',
+          name: 'AWS S3',
           icon: siAmazons3.path,
           docsLink: 'https://aws.amazon.com/s3/',
+        },
+        {
+          name: 'AWS EC2',
+          icon: siAmazonec2.path,
+          docsLink: 'https://aws.amazon.com/ec2/',
+        },
+        {
+          name: 'Docker',
+          icon: siDocker.path,
+          docsLink: 'https://www.docker.com/',
         },
       ],
     },
@@ -139,19 +215,19 @@ export default class Portfolio extends Vue {
       repoLink: 'https://github.com/joyceben33/Sports-Betting-App',
       technologies: [
         {
-          name: 'React.js',
-          icon: siReact.path,
-          docsLink: 'https://reactjs.org/',
-        },
-        {
           name: 'Javascript',
           icon: siJavascript.path,
           docsLink: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript',
         },
         {
-          name: 'MongoDB',
-          icon: siMongodb.path,
-          docsLink: 'https://www.mongodb.com/',
+          name: 'React.js',
+          icon: siReact.path,
+          docsLink: 'https://reactjs.org/',
+        },
+        {
+          name: 'Redux.js',
+          icon: siRedux.path,
+          docsLink: 'https://redux.js.org/',
         },
         {
           name: 'Node.js',
@@ -162,6 +238,11 @@ export default class Portfolio extends Vue {
           name: 'Socket.io',
           icon: siSocketdotio.path,
           docsLink: 'https://socket.io/',
+        },
+        {
+          name: 'MongoDB',
+          icon: siMongodb.path,
+          docsLink: 'https://www.mongodb.com/',
         },
       ],
     },
@@ -174,24 +255,29 @@ export default class Portfolio extends Vue {
       repoLink: 'https://github.com/rachel-fischoff/cohort-8-project',
       technologies: [
         {
-          name: 'React.js',
-          icon: siReact.path,
-          docsLink: 'https://reactjs.org/',
-        },
-        {
           name: 'Javascript',
           icon: siJavascript.path,
           docsLink: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript',
         },
         {
-          name: 'MongoDB',
-          icon: siMongodb.path,
-          docsLink: 'https://www.mongodb.com/',
+          name: 'React.js',
+          icon: siReact.path,
+          docsLink: 'https://reactjs.org/',
+        },
+        {
+          name: 'Redux.js',
+          icon: siRedux.path,
+          docsLink: 'https://redux.js.org/',
         },
         {
           name: 'Node.js',
           icon: siNodedotjs.path,
           docsLink: 'https://nodejs.org/en/',
+        },
+        {
+          name: 'MongoDB',
+          icon: siMongodb.path,
+          docsLink: 'https://www.mongodb.com/',
         },
       ],
     },
