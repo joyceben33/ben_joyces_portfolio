@@ -50,6 +50,13 @@
   </v-app-bar>
 </template>
 <style lang="scss">
+//MY Name
+#profile-name {
+  font-family: 'Mr De Haviland', 'Poppins', sans-serif;
+  font-size: 3.25rem;
+  line-height: 1.25;
+}
+
 .v-app-bar {
   a,
   button {
