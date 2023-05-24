@@ -4,15 +4,14 @@
       <!-- Social Media Icons -->
       <v-row class="text-center">
         <v-col>
-          <v-btn x-large icon target="_blank" href="https://www.linkedin.com/in/ben-marlow-joyce/">
-            <v-icon x-large>{{ mdiLinkedin }}</v-icon>
-          </v-btn>
-
           <v-btn x-large icon target="_blank" href="https://github.com/joyceben33">
-            <v-icon x-large>{{ mdiGithub }}</v-icon>
+            <v-icon large>{{ siGithub.path }}</v-icon>
+          </v-btn>
+          <v-btn x-large icon target="_blank" href="https://www.linkedin.com/in/ben-marlow-joyce/">
+            <v-icon large>{{ siLinkedin.path }}</v-icon>
           </v-btn>
           <v-btn x-large icon target="_blank" href="https://www.facebook.com/ben.joyce.3363/">
-            <v-icon x-large>{{ mdiFacebook }}</v-icon>
+            <v-icon large>{{ siFacebook.path }}</v-icon>
           </v-btn>
         </v-col>
       </v-row>
@@ -51,14 +50,14 @@ footer {
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
-import { mdiFacebook, mdiGithub, mdiLinkedin } from '@mdi/js';
+import { siFacebook, siGithub, siLinkedin } from 'simple-icons';
 
 @Component({})
 export default class Footer extends Vue {
-  mdiFacebook = mdiFacebook;
+  siFacebook = siFacebook;
 
-  mdiGithub = mdiGithub;
+  siGithub = siGithub;
 
-  mdiLinkedin = mdiLinkedin;
+  siLinkedin = siLinkedin;
 }
 </script>
