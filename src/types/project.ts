@@ -6,6 +6,7 @@ interface ITechnology {
 
 export interface IProject {
   name: string;
+  isOrg: boolean;
   description: string;
   image: string;
   deployLink: string;
