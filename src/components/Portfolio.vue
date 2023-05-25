@@ -403,42 +403,6 @@ export default class Portfolio extends Vue {
         },
       ],
     },
-    {
-      name: 'Homebase',
-      isOrg: false,
-      description:
-        'An Agile team setting with a group of 9 members and a 4 ½ day sprint cycle, our team was able to provide an MVP version of the application to the client. This MERN Full Stack application provided a fully functional project management software.',
-      image: 'Homebase_group_project.png',
-      deployLink: 'https://youtube.com/watch?v=2Zg79auMMbo&feature=share',
-      repoLink: 'https://github.com/rachel-fischoff/cohort-8-project',
-      technologies: [
-        {
-          name: 'Javascript',
-          icon: siJavascript.path,
-          docsLink: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript',
-        },
-        {
-          name: 'React.js',
-          icon: siReact.path,
-          docsLink: 'https://reactjs.org/',
-        },
-        {
-          name: 'Redux.js',
-          icon: siRedux.path,
-          docsLink: 'https://redux.js.org/',
-        },
-        {
-          name: 'Node.js',
-          icon: siNodedotjs.path,
-          docsLink: 'https://nodejs.org/en/',
-        },
-        {
-          name: 'MongoDB',
-          icon: siMongodb.path,
-          docsLink: 'https://www.mongodb.com/',
-        },
-      ],
-    },
   ];
 
   siGithub = siGithub;
