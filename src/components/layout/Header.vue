@@ -14,16 +14,13 @@
     <v-spacer></v-spacer>
     <div id="desktopMenu" class="hidden-md-and-down">
       <v-btn class="rounded-pill" @click="scrollTo('#about')" text>
-        <h2 class="nav-menu-item">About</h2>
-        <v-icon>mdi-face-man</v-icon>
+        <h2 class="nav-menu-item">About Me</h2>
       </v-btn>
       <v-btn class="rounded-pill" @click="scrollTo('#portfolio')" text>
         <h2 class="nav-menu-item">Portfolio</h2>
-        <v-icon>mdi-laptop</v-icon>
       </v-btn>
       <v-btn class="rounded-pill" @click="scrollTo('#contact')" text>
         <h2 class="nav-menu-item">Contact</h2>
-        <v-icon>mdi-cellphone</v-icon>
       </v-btn>
     </div>
     <!-- mobile menu below -->
@@ -33,25 +30,16 @@
       <v-navigation-drawer light v-model="mobileDrawer" app fixed hide-overlay right temporary>
         <v-list>
           <v-list-item @click="mobileScrollTo('#about')">
-            <v-list-item-icon>
-              <v-icon>mdi-face</v-icon>
-            </v-list-item-icon>
             <v-list-item-content>
               <v-list-item-title>About</v-list-item-title>
             </v-list-item-content>
           </v-list-item>
           <v-list-item @click="mobileScrollTo('#portfolio')">
-            <v-list-item-icon>
-              <v-icon>mdi-laptop</v-icon>
-            </v-list-item-icon>
             <v-list-item-content>
               <v-list-item-title>Portfolio</v-list-item-title>
             </v-list-item-content>
           </v-list-item>
           <v-list-item @click="mobileScrollTo('#contact')">
-            <v-list-item-icon>
-              <v-icon>mdi-cellphone-iphone</v-icon>
-            </v-list-item-icon>
             <v-list-item-content>
               <v-list-item-title>Contact</v-list-item-title>
             </v-list-item-content>
@@ -62,6 +50,13 @@
   </v-app-bar>
 </template>
 <style lang="scss">
+//MY Name
+#profile-name {
+  font-family: 'Mr De Haviland', 'Poppins', sans-serif;
+  font-size: 3.25rem;
+  line-height: 1.25;
+}
+
 .v-app-bar {
   a,
   button {

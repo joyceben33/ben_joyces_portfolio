@@ -5,45 +5,81 @@
         <v-col class="text-center" cols="12" md="12" lg="12" xl="12">
           <h2>Portfolio</h2>
         </v-col>
-        <v-col v-for="project in portfolio.projects" :key="project.project_name" cols="12" sm="12" md="6" lg="6" xl="4">
-          <v-card class="rounded-xl" :href="project.deploy_link" target="_blank" hover outlined height="100%">
-            <v-img :src="require(`../assets/${project.preview_img}`)" height="250px"></v-img>
-            <v-container>
-              <v-card-title>{{ project.project_name }}</v-card-title>
-              <v-card-text>{{ project.project_description }}</v-card-text>
-              <v-divider class="mx-4"></v-divider>
-              <!-- Technologies Used -->
-              <v-card-title>Technologies Used:</v-card-title>
-              <v-card-actions class="flex-wrap">
-                <v-btn
-                  v-for="tech in project.technologies"
-                  :key="tech.name"
-                  :href="tech.docs_link"
-                  target="_blank"
-                  :title="tech.name"
-                  large
-                  icon
-                >
-                  <v-icon large>{{ tech.icon }}</v-icon>
-                </v-btn>
-              </v-card-actions>
-              <v-divider class="mx-4"></v-divider>
-              <!-- Code Repository -->
-              <v-card-title>Code Repository:</v-card-title>
-              <v-card-actions>
-                <v-btn x-large icon :href="project.repo_link" target="_blank">
-                  <v-icon large>{{ mdiGithub }}</v-icon>
-                </v-btn>
-              </v-card-actions>
-            </v-container>
-          </v-card>
-        </v-col>
       </v-row>
+      <div class="portfolio-container">
+        <v-row>
+          <v-col
+            v-for="project in projects"
+            :key="project.name"
+            cols="12"
+            sm="12"
+            md="12"
+            lg="12"
+            xl="12"
+            class="py-lg-12 py-xl-12 py-6"
+          >
+            <v-card :href="project.deployLink" target="_blank" tile hover outlined height="100%">
+              <v-img :src="project.image ? require(`../assets/${project.image}`) : ''" height="250px"></v-img>
+              <v-container>
+                <v-card-title>{{ project.name }}</v-card-title>
+                <v-card-text>{{ project.description }}</v-card-text>
+                <v-divider class="mx-4"></v-divider>
+                <!-- Technologies Used -->
+                <v-card-title>Technologies Used:</v-card-title>
+                <v-card-actions class="flex-wrap">
+                  <v-btn
+                    v-for="tech in project.technologies"
+                    :key="tech.name"
+                    :href="tech.docsLink"
+                    target="_blank"
+                    :title="tech.name"
+                    large
+                    icon
+                  >
+                    <v-icon>{{ tech.icon }}</v-icon>
+                  </v-btn>
+                </v-card-actions>
+                <v-divider class="mx-4"></v-divider>
+                <!-- Code Repository -->
+                <v-card-title>{{ project.isOrg ? `Organization's Repository:` : 'Code Repository:' }}</v-card-title>
+                <v-card-actions>
+                  <v-btn icon :href="project.repoLink" target="_blank">
+                    <v-icon>{{ siGithub.path }}</v-icon>
+                  </v-btn>
+                </v-card-actions>
+              </v-container>
+            </v-card>
+          </v-col>
+        </v-row>
+      </div>
     </v-container>
   </section>
 </template>
 
 <style lang="scss">
+@import '~vuetify/src/styles/settings/_variables';
+
+// xl
+@media screen and (min-width: 1904px) {
+  .portfolio-container {
+    padding-left: 352px;
+    padding-right: 352px;
+  }
+}
+// lg-xl
+@media screen and (min-width: 1264px) and (max-width: 1904px) {
+  .portfolio-container {
+    padding-left: 128px;
+    padding-right: 128px;
+  }
+}
+// md-lg
+@media screen and (min-width: 960px) and (max-width: 1264px) {
+  .portfolio-container {
+    padding-left: 64px;
+    padding-right: 64px;
+  }
+}
 a {
   text-decoration: none;
   &:hover {
@@ -56,135 +92,313 @@ a {
 import Vue from 'vue';
 import Component from 'vue-class-component';
 import {
-  mdiNuxt,
-  mdiNodejs,
-  mdiVuetify,
-  mdiLanguageTypescript,
-  mdiAws,
-  mdiLambda,
-  mdiGithub,
-  mdiLanguageJavascript,
-  mdiReact,
-  mdiDatabase,
-  mdiFlashCircle,
-} from '@mdi/js';
-
+  siNuxtdotjs,
+  siTypescript,
+  siJavascript,
+  siNodedotjs,
+  siVuetify,
+  siAmazons3,
+  siAwslambda,
+  siServerless,
+  siJest,
+  siReact,
+  siGithub,
+  siMongodb,
+  siSocketdotio,
+  siPostgresql,
+  siAmazonec2,
+  siDocker,
+  siVuedotjs,
+  siQuasar,
+  siRedux,
+  siBootstrap,
+  siSequelize,
+  siMysql,
+  siAmazonrds,
+  siAmazoneks,
+  siAmazonapigateway,
+  siCypress,
+} from 'simple-icons';
+/* @ts-ignore no-unused-vars */
+import type { IProject } from '@/types/project';
+/* Docs for Simple-icons https://simpleicons.org/ */
 @Component({})
 export default class Portfolio extends Vue {
-  portfolio: portfolio = {
-    projects: [
-      {
-        project_name: 'Pomona Pipe Products',
-        project_description: `Pomona Pipe Products, Inc. is a civil engineering firm specializing in bridges and environmental construction. The company services a wide range of private businesses, municipalities, and state Departments of Transportation. In my role as a full-stack developer, I helped engineer the company's public-facing web application for marketing their products and services. The stack consists of a Node API, AWS S3 Buckets, AWS CloudFront CDN, a Headless CMS (Prismic.io), Algolia Search Engine, and a server-side rendering web application. In addition I have also worked to improve the company's search engine rankings by optimizing meta data and forming a link-building strategy through social media.`,
-        preview_img: 'pomona_screenshot.png',
-        deploy_link: 'https://pomonapipeproducts.com/',
-        repo_link: 'https://github.com/pomona-pipe/pomona-site-v2',
-        technologies: [
-          {
-            name: 'Nuxt.js',
-            icon: mdiNuxt,
-            docs_link: 'https://nuxtjs.org/',
-          },
-          {
-            name: 'Typescript',
-            icon: mdiLanguageTypescript,
-            docs_link: 'https://www.typescriptlang.org/',
-          },
-          {
-            name: 'Javascript',
-            icon: mdiLanguageJavascript,
-            docs_link: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript',
-          },
-          {
-            name: 'Node.js',
-            icon: mdiNodejs,
-            docs_link: 'https://nodejs.org/en/',
-          },
-          {
-            name: 'Vuetify.js',
-            icon: mdiVuetify,
-            docs_link: 'https://vuetifyjs.com/en/',
-          },
-          {
-            name: 'AWS',
-            icon: mdiAws,
-            docs_link: 'https://aws.amazon.com/',
-          },
-          {
-            name: 'Lambda',
-            icon: mdiLambda,
-            docs_link: 'https://aws.amazon.com/lambda/',
-          },
-        ],
-      },
-      {
-        project_name: 'Courtside Gamble',
-        project_description:
-          'In an Agile setting with one member (myself) and a 7 day sprint cycle. Courtside Gamble is an NBA betting app that streams real-time scores, plays, and payouts as the game plays out. It allows multiple clients to experience the same game at the same time, just as they would in real-life.',
-        preview_img: 'courtside_gamble.png',
-        deploy_link: 'https://admiring-neumann-0f0f2b.netlify.app/',
-        repo_link: 'https://github.com/joyceben33/Sports-Betting-App',
-        technologies: [
-          {
-            name: 'React.js',
-            icon: mdiReact,
-            docs_link: 'https://reactjs.org/',
-          },
-          {
-            name: 'Javascript',
-            icon: mdiLanguageJavascript,
-            docs_link: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript',
-          },
-          {
-            name: 'MongoDB',
-            icon: mdiDatabase,
-            docs_link: 'https://www.mongodb.com/',
-          },
-          {
-            name: 'Node.js',
-            icon: mdiNodejs,
-            docs_link: 'https://nodejs.org/en/',
-          },
-          {
-            name: 'Socket.io',
-            icon: mdiFlashCircle,
-            docs_link: 'https://socket.io/',
-          },
-        ],
-      },
-      {
-        project_name: 'Homebase',
-        project_description:
-          'An Agile team setting with a group of 9 members and a 4 ½ day sprint cycle, our team was able to provide an MVP version of the application to the client. This MERN Full Stack application provided a fully functional project management software.',
-        preview_img: 'Homebase_group_project.png',
-        deploy_link: 'https://youtube.com/watch?v=2Zg79auMMbo&feature=share',
-        repo_link: 'https://github.com/rachel-fischoff/cohort-8-project',
-        technologies: [
-          {
-            name: 'React.js',
-            icon: mdiReact,
-            docs_link: 'https://reactjs.org/',
-          },
-          {
-            name: 'Javascript',
-            icon: mdiLanguageJavascript,
-            docs_link: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript',
-          },
-          {
-            name: 'MongoDB',
-            icon: mdiDatabase,
-            docs_link: 'https://www.mongodb.com/',
-          },
-          {
-            name: 'Node.js',
-            icon: mdiNodejs,
-            docs_link: 'https://nodejs.org/en/',
-          },
-        ],
-      },
-    ],
-  };
+  projects: IProject[] = [
+    {
+      name: 'LASSO',
+      isOrg: true,
+      description: `LASSO is a SaaS company, that sells software to companies in the live event industry. In my role here I worked with four other engineers, one UI/UX designer and one Product Owner. I played a role in the development of two different products from the ground up, which involved constant communication between the Product Owner and the engineering team. My responsibilities as a Software Engineer III were database development, api development, and front end development. Some of the individual contributions include creating a private component library utilizing GitHub’s Private NPM Registry, developing a real-time collaborative note editing tool with TalkJs, CRUD api routes that leveraged Zod Schema pattern matching, Casbin for permissions, and Sequelize as our ORM.`,
+      image: 'lasso_screenshot.png',
+      deployLink: 'https://www.lasso.io/',
+      repoLink: 'https://github.com/lassoworkforce',
+      technologies: [
+        {
+          name: 'Typescript',
+          icon: siTypescript.path,
+          docsLink: 'https://www.typescriptlang.org/',
+        },
+        {
+          name: 'Javascript',
+          icon: siJavascript.path,
+          docsLink: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript',
+        },
+        {
+          name: 'Vue.js',
+          icon: siVuedotjs.path,
+          docsLink: 'https://vuejs.org/',
+        },
+        {
+          name: 'Bootstrap',
+          icon: siBootstrap.path,
+          docsLink: 'https://getbootstrap.com/',
+        },
+        {
+          name: 'Cypress',
+          icon: siCypress.path,
+          docsLink: 'https://www.cypress.io/',
+        },
+        {
+          name: 'Node.js',
+          icon: siNodedotjs.path,
+          docsLink: 'https://nodejs.org/en/',
+        },
+        {
+          name: 'Sequelize',
+          icon: siSequelize.path,
+          docsLink: 'https://sequelize.org/',
+        },
+        {
+          name: 'MySQL',
+          icon: siMysql.path,
+          docsLink: 'https://www.mysql.com/',
+        },
+        {
+          name: 'AWS RDS',
+          icon: siAmazonrds.path,
+          docsLink: 'https://aws.amazon.com/rds/',
+        },
+        {
+          name: 'AWS Lambda',
+          icon: siAwslambda.path,
+          docsLink: 'https://aws.amazon.com/lambda/',
+        },
+        {
+          name: 'AWS S3',
+          icon: siAmazons3.path,
+          docsLink: 'https://aws.amazon.com/s3/',
+        },
+        {
+          name: 'AWS EC2',
+          icon: siAmazonec2.path,
+          docsLink: 'https://aws.amazon.com/ec2/',
+        },
+        {
+          name: 'AWS EKS',
+          icon: siAmazoneks.path,
+          docsLink: 'https://aws.amazon.com/eks/',
+        },
+        {
+          name: 'Docker',
+          icon: siDocker.path,
+          docsLink: 'https://www.docker.com/',
+        },
+      ],
+    },
+    {
+      name: 'Pacific Arc, Inc.',
+      isOrg: true,
+      description:
+        'Pacific Arc, Inc. is an architectual design tool wholesaler. In my role here I helped build an internal web application that provided tools to help with different workflows within the business. Some of the workflows / features I developed were order fulfillment, order analytics, order logistics, & inventory management. In addition to being an engineer on the product team, I also held responsibilities in their dev-ops department. Some of the dev-ops contributions include AWS Cognito & IAM User Management, setting up a CI/CD pipeline, & migrating Docker Image from Linux to Linux 2.',
+      image: 'pacific_arc_screenshot.png',
+      deployLink: 'https://www.pacificarc.us/',
+      repoLink: 'https://github.com/Pacific-Arc',
+      technologies: [
+        {
+          name: 'Typescript',
+          icon: siTypescript.path,
+          docsLink: 'https://www.typescriptlang.org/',
+        },
+        {
+          name: 'Javascript',
+          icon: siJavascript.path,
+          docsLink: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript',
+        },
+        {
+          name: 'Vue.js',
+          icon: siVuedotjs.path,
+          docsLink: 'https://vuejs.org/',
+        },
+        {
+          name: 'Quasar',
+          icon: siQuasar.path,
+          docsLink: 'https://quasar.dev/',
+        },
+        {
+          name: 'Node.js',
+          icon: siNodedotjs.path,
+          docsLink: 'https://nodejs.org/en/',
+        },
+        {
+          name: 'PostgreSQL',
+          icon: siPostgresql.path,
+          docsLink: 'https://www.postgresql.org/',
+        },
+        {
+          name: 'AWS RDS',
+          icon: siAmazonrds.path,
+          docsLink: 'https://aws.amazon.com/rds/',
+        },
+        {
+          name: 'AWS Lambda',
+          icon: siAwslambda.path,
+          docsLink: 'https://aws.amazon.com/lambda/',
+        },
+        {
+          name: 'AWS API Gateway',
+          icon: siAmazonapigateway.path,
+          docsLink: 'https://aws.amazon.com/api-gateway/',
+        },
+        {
+          name: 'AWS S3',
+          icon: siAmazons3.path,
+          docsLink: 'https://aws.amazon.com/s3/',
+        },
+        {
+          name: 'AWS EC2',
+          icon: siAmazonec2.path,
+          docsLink: 'https://aws.amazon.com/ec2/',
+        },
+        {
+          name: 'AWS EKS',
+          icon: siAmazoneks.path,
+          docsLink: 'https://aws.amazon.com/eks/',
+        },
+        {
+          name: 'Docker',
+          icon: siDocker.path,
+          docsLink: 'https://www.docker.com/',
+        },
+      ],
+    },
+    {
+      name: 'Pomona Pipe Products',
+      isOrg: true,
+      description: `Pomona Pipe Products, Inc. is a civil engineering firm specializing in bridges and environmental construction. The company services a wide range of private businesses, municipalities, and state Departments of Transportation. In my role as a full-stack developer, I helped engineer the company's public-facing web application for marketing their products and services. The stack consists of a Serverless Node API, AWS S3 Buckets, AWS CloudFront CDN, a Headless CMS (Prismic.io), Algolia Search Engine, and a server-side rendering web application. In addition I have also worked to improve the company's search engine rankings by optimizing meta data and forming a link-building strategy through social media.`,
+      image: 'pomona_screenshot.png',
+      deployLink: 'https://pomonapipeproducts.com/',
+      repoLink: 'https://github.com/pomona-pipe/',
+      technologies: [
+        {
+          name: 'Typescript',
+          icon: siTypescript.path,
+          docsLink: 'https://www.typescriptlang.org/',
+        },
+        {
+          name: 'Javascript',
+          icon: siJavascript.path,
+          docsLink: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript',
+        },
+        {
+          name: 'Nuxt.js',
+          icon: siNuxtdotjs.path,
+          docsLink: 'https://nuxtjs.org/',
+        },
+        {
+          name: 'Vuetify.js',
+          icon: siVuetify.path,
+          docsLink: 'https://vuetifyjs.com/en/',
+        },
+        {
+          name: 'Jest',
+          icon: siJest.path,
+          docsLink: 'https://jestjs.io/',
+        },
+        {
+          name: 'Node.js',
+          icon: siNodedotjs.path,
+          docsLink: 'https://nodejs.org/en/',
+        },
+        {
+          name: 'Serverless',
+          icon: siServerless.path,
+          docsLink: 'https://www.serverless.com/cloud/docs',
+        },
+        {
+          name: 'AWS Lambda',
+          icon: siAwslambda.path,
+          docsLink: 'https://aws.amazon.com/lambda/',
+        },
+        {
+          name: 'AWS API Gateway',
+          icon: siAmazonapigateway.path,
+          docsLink: 'https://aws.amazon.com/api-gateway/',
+        },
+        {
+          name: 'AWS S3',
+          icon: siAmazons3.path,
+          docsLink: 'https://aws.amazon.com/s3/',
+        },
+        {
+          name: 'AWS EC2',
+          icon: siAmazonec2.path,
+          docsLink: 'https://aws.amazon.com/ec2/',
+        },
+        {
+          name: 'AWS EKS',
+          icon: siAmazoneks.path,
+          docsLink: 'https://aws.amazon.com/eks/',
+        },
+        {
+          name: 'Docker',
+          icon: siDocker.path,
+          docsLink: 'https://www.docker.com/',
+        },
+      ],
+    },
+    {
+      name: 'Courtside Gamble',
+      isOrg: false,
+      description:
+        'In an Agile setting with one member (myself) and a 7 day sprint cycle. Courtside Gamble is an NBA betting app that streams real-time scores, plays, and payouts as the game plays out. It allows multiple clients to experience the same game at the same time, just as they would in real-life.',
+      image: 'courtside_gamble.png',
+      deployLink: 'https://admiring-neumann-0f0f2b.netlify.app/',
+      repoLink: 'https://github.com/joyceben33/Sports-Betting-App',
+      technologies: [
+        {
+          name: 'Javascript',
+          icon: siJavascript.path,
+          docsLink: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript',
+        },
+        {
+          name: 'React.js',
+          icon: siReact.path,
+          docsLink: 'https://reactjs.org/',
+        },
+        {
+          name: 'Redux.js',
+          icon: siRedux.path,
+          docsLink: 'https://redux.js.org/',
+        },
+        {
+          name: 'Node.js',
+          icon: siNodedotjs.path,
+          docsLink: 'https://nodejs.org/en/',
+        },
+        {
+          name: 'Socket.io',
+          icon: siSocketdotio.path,
+          docsLink: 'https://socket.io/',
+        },
+        {
+          name: 'MongoDB',
+          icon: siMongodb.path,
+          docsLink: 'https://www.mongodb.com/',
+        },
+      ],
+    },
+  ];
 
-  mdiGithub = mdiGithub;
+  siGithub = siGithub;
 }
 </script>

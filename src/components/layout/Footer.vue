@@ -2,24 +2,21 @@
   <v-footer class="d-block py-2" dark color="primary">
     <v-container>
       <!-- Social Media Icons -->
-      <v-row class="text-center">
-        <v-col>
-          <v-btn x-large icon target="_blank" href="https://www.linkedin.com/in/ben-marlow-joyce/">
-            <v-icon x-large>{{ mdiLinkedin }}</v-icon>
-          </v-btn>
-
-          <v-btn x-large icon target="_blank" href="https://github.com/joyceben33">
-            <v-icon x-large>{{ mdiGithub }}</v-icon>
-          </v-btn>
-          <v-btn x-large icon target="_blank" href="https://www.facebook.com/ben.joyce.3363/">
-            <v-icon x-large>{{ mdiFacebook }}</v-icon>
-          </v-btn>
-        </v-col>
-      </v-row>
+      <div class="d-flex justify-center mb-2">
+        <v-btn large icon target="_blank" href="https://github.com/joyceben33" class="mx-1">
+          <v-icon>{{ siGithub.path }}</v-icon>
+        </v-btn>
+        <v-btn large icon target="_blank" href="https://www.linkedin.com/in/ben-marlow-joyce/" class="mx-1">
+          <v-icon>{{ siLinkedin.path }}</v-icon>
+        </v-btn>
+        <v-btn large icon target="_blank" href="https://www.facebook.com/ben.joyce.3363/" class="mx-1">
+          <v-icon>{{ siFacebook.path }}</v-icon>
+        </v-btn>
+      </div>
       <v-divider></v-divider>
       <!-- legal info -->
       <v-row class="text-center">
-        <v-col>&copy; {{ new Date().getFullYear() }} Ben Joyce, All rights reserved</v-col>
+        <v-col>&copy; {{ `${presentYear} Ben Joyce, All rights reserved` }} </v-col>
       </v-row>
     </v-container>
   </v-footer>
@@ -51,14 +48,16 @@ footer {
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
-import { mdiFacebook, mdiGithub, mdiLinkedin } from '@mdi/js';
+import { siFacebook, siGithub, siLinkedin } from 'simple-icons';
 
 @Component({})
 export default class Footer extends Vue {
-  mdiFacebook = mdiFacebook;
+  siFacebook = siFacebook;
 
-  mdiGithub = mdiGithub;
+  siGithub = siGithub;
 
-  mdiLinkedin = mdiLinkedin;
+  siLinkedin = siLinkedin;
+
+  presentYear = new Date().getFullYear();
 }
 </script>
