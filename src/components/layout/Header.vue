@@ -14,7 +14,7 @@
     <v-spacer></v-spacer>
     <div id="desktopMenu" class="hidden-md-and-down">
       <v-btn class="rounded-pill" @click="scrollTo('#about')" text>
-        <h2 class="nav-menu-item">About</h2>
+        <h2 class="nav-menu-item">About Me</h2>
       </v-btn>
       <v-btn class="rounded-pill" @click="scrollTo('#portfolio')" text>
         <h2 class="nav-menu-item">Portfolio</h2>
