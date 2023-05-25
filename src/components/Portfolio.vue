@@ -59,13 +59,6 @@
 <style lang="scss">
 @import '~vuetify/src/styles/settings/_variables';
 
-// @media #{ map-get($display-breakpoints, 'xl-and-up')} {
-//   .portfolio-container {
-//     padding-left: 320px;
-//     padding-right: 320px;
-//   }
-// }
-
 // xl
 @media screen and (min-width: 1904px) {
   .portfolio-container {
@@ -73,13 +66,14 @@
     padding-right: 352px;
   }
 }
-// lg
+// lg-xl
 @media screen and (min-width: 1264px) and (max-width: 1904px) {
   .portfolio-container {
-    padding-left: 320px;
-    padding-right: 320px;
+    padding-left: 128px;
+    padding-right: 128px;
   }
 }
+// md-lg
 @media screen and (min-width: 960px) and (max-width: 1264px) {
   .portfolio-container {
     padding-left: 64px;
