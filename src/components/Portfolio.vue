@@ -209,7 +209,7 @@ export default class Portfolio extends Vue {
       name: 'Pacific Arc, Inc.',
       isOrg: true,
       description:
-        'Pacific Arc, Inc. is an architectual design tool wholesaler. In my role here I helped build an internal web application that provided tools to help with different workflows within the business. Some of the workflows / features I developed were order fulfillment, order analytics, order logistics, & inventory management. In addition to being an engineer on the product team, I also held responsibilities in their dev-ops department. Some of the dev-ops contributions include AWS Cognito & IAM User Management, setting up a CI/CD pipeline, & migrating Docker Image from Linux to Linux 2.',
+        'Pacific Arc, Inc. is an architectural design tool wholesaler. In my role here I helped build an internal web application that provided tools to help with different workflows within the business. Some of the workflows / features I developed were order fulfillment, order analytics, order logistics, & inventory management. In addition to being an engineer on the product team, I also held responsibilities in their dev-ops department. Some of the dev-ops contributions include AWS Cognito & IAM User Management, setting up a CI/CD pipeline, & migrating Docker Image from Linux to Linux 2.',
       image: 'pacific_arc_screenshot.png',
       deployLink: 'https://www.pacificarc.us/',
       repoLink: 'https://github.com/Pacific-Arc',
