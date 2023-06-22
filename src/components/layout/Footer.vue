@@ -1,5 +1,5 @@
 <template>
-  <v-footer class="d-block py-2" dark color="primary">
+  <v-footer id="footer-social" class="d-block py-2" dark color="primary">
     <v-container>
       <!-- Social Media Icons -->
       <div class="d-flex justify-center mb-2">

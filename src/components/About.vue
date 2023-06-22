@@ -1,5 +1,5 @@
 <template>
-  <section id="about">
+  <section id="about-me">
     <v-container>
       <v-row>
         <v-col class="text-center" cols="12" md="12" lg="12" xl="12">
