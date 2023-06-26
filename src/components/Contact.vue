@@ -3,7 +3,7 @@
     <v-container>
       <v-row class="d-flex align-start">
         <v-col class="text-center" cols="12" md="12" lg="12" xl="12">
-          <h2>Contact</h2>
+          <h2>Location</h2>
         </v-col>
       </v-row>
 
@@ -19,10 +19,6 @@
         >
           <v-icon class="pr-2">{{ mdiMapMarker }}</v-icon>
           Charlotte, NC
-        </v-btn>
-        <v-btn class="text-decoration-none ma-2" href="mailto:joyceben33@gmail.com" elevation="2" dark rounded large>
-          <v-icon class="pr-2">{{ mdiEmail }}</v-icon>
-          joyceben33@gmail.com
         </v-btn>
       </div>
     </v-container>

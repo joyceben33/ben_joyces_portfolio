@@ -5,8 +5,9 @@
         <v-container>
           <v-row class="text-center">
             <v-col>
+              <!-- Who Are You? -->
+              <span id="typer-constant">Describe Yourself?</span>
               <h1>
-                I'm&nbsp;
                 <vue-typer
                   class="d-block d-sm-inline"
                   :text="vueTypeOptions"
@@ -37,11 +38,12 @@ import Component from 'vue-class-component';
 @Component({})
 export default class Hero extends Vue {
   vueTypeOptions = [
-    'a Software Engineer',
-    'an NC State Alum',
-    'a Tennis & Pickleball Player',
-    'a Traveler',
-    'an Outdoorsman',
+    'Software Engineer',
+    'NC State Alum',
+    'Tennis & Pickleball Player',
+    'Nutrition Enthusiast',
+    'Golfer',
+    'Gym Advocate',
   ];
 }
 </script>
@@ -57,7 +59,9 @@ export default class Hero extends Vue {
   padding-top: 64px;
 }
 
-h1 {
+#typer-constant {
+  font-family: 'Poppins', sans-serif;
+  font-size: 2rem;
   color: #ffffff;
 }
 

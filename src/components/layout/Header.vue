@@ -1,63 +1,167 @@
 <template>
   <v-app-bar class="pt-0" absolute flat color="transparent" height="85" dark>
     <div>
-      <v-img
-        class="rounded-circle"
-        contain
-        :src="require('../../assets/profile_pic_square.jpeg')"
-        transition="scale-transition"
-        width="50"
-      />
-    </div>
-    <h1 id="profile-name" class="mb-0 ml-2 mt-2">Ben Joyce</h1>
-
-    <v-spacer></v-spacer>
-    <div id="desktopMenu" class="hidden-md-and-down">
-      <v-btn class="rounded-pill" @click="scrollTo('#about')" text>
-        <h2 class="nav-menu-item">About Me</h2>
-      </v-btn>
-      <v-btn class="rounded-pill" @click="scrollTo('#portfolio')" text>
-        <h2 class="nav-menu-item">Portfolio</h2>
-      </v-btn>
-      <v-btn class="rounded-pill" @click="scrollTo('#contact')" text>
-        <h2 class="nav-menu-item">Contact</h2>
-      </v-btn>
-    </div>
-    <!-- mobile menu below -->
-    <div class="hidden-lg-and-up">
       <v-app-bar-nav-icon default="mdiMenu" @click.stop="toggleMobileDrawer()"></v-app-bar-nav-icon>
       <v-overlay @click.native="toggleMobileDrawer()" :value="mobileDrawer"></v-overlay>
-      <v-navigation-drawer light v-model="mobileDrawer" app fixed hide-overlay right temporary>
+      <v-navigation-drawer light v-model="mobileDrawer" width="300" app fixed hide-overlay temporary>
         <v-list>
-          <v-list-item @click="mobileScrollTo('#about')">
+          <v-list-item @click="scrollTo('about-me')">
+            <v-list-item-icon>
+              <v-icon>{{ 'mdi-account' }}</v-icon>
+            </v-list-item-icon>
             <v-list-item-content>
-              <v-list-item-title>About</v-list-item-title>
+              <v-list-item-title>About Me</v-list-item-title>
             </v-list-item-content>
           </v-list-item>
-          <v-list-item @click="mobileScrollTo('#portfolio')">
+          <!-- TODO: https://v2.vuetifyjs.com/en/components/lists/#sub-group -->
+          <v-list-group prepend-icon="mdi-folder" no-action>
+            <template v-slot:activator>
+              <v-list-item-content>
+                <v-list-item-title>Projects</v-list-item-title>
+              </v-list-item-content>
+            </template>
+            <v-list-item
+              v-for="projectLink in projectLinks"
+              :key="projectLink.name"
+              @click="scrollTo(projectLink.scrollHash)"
+            >
+              <v-list-item-content>
+                <v-list-item-title>{{ projectLink.name }}</v-list-item-title>
+              </v-list-item-content>
+            </v-list-item>
+          </v-list-group>
+          <v-list-item @click="scrollTo('social-media')">
+            <v-list-item-icon>
+              <v-icon>{{ 'mdi-account-group' }}</v-icon>
+            </v-list-item-icon>
             <v-list-item-content>
-              <v-list-item-title>Portfolio</v-list-item-title>
-            </v-list-item-content>
-          </v-list-item>
-          <v-list-item @click="mobileScrollTo('#contact')">
-            <v-list-item-content>
-              <v-list-item-title>Contact</v-list-item-title>
+              <v-list-item-title>Social</v-list-item-title>
             </v-list-item-content>
           </v-list-item>
         </v-list>
       </v-navigation-drawer>
     </div>
+
+    <v-spacer></v-spacer>
+
+    <div>
+      <h1 id="profile-name" class="mb-0">Ben Joyce</h1>
+    </div>
+
+    <v-spacer></v-spacer>
+    <div>
+      <v-img
+        class="rounded-circle"
+        contain
+        :src="require('../../assets/profile_pic_square.jpeg')"
+        transition="scale-transition"
+        width="50px"
+      />
+    </div>
   </v-app-bar>
 </template>
+
+<script lang="ts">
+import Vue from 'vue';
+import Component from 'vue-class-component';
+import { mdiMenu } from '@mdi/js';
+
+type ProjectLink = {
+  name: string;
+  scrollHash: string;
+};
+
+@Component({
+  components: {},
+})
+export default class Header extends Vue {
+  mdiMenu = mdiMenu;
+
+  mobileDrawer: boolean | null = null;
+
+  projectLinks: ProjectLink[] = [
+    { name: 'LASSO', scrollHash: 'lasso' },
+    { name: 'Pacific Arc', scrollHash: 'pacific-arc' },
+    { name: 'Pomona Pipe Products', scrollHash: 'pomona-pipe-products' },
+    { name: 'Courtside Gamble', scrollHash: 'courtside-gamble' },
+  ];
+
+  // Check if element is in the visible viewport
+  isInViewport = (element: HTMLElement) => {
+    const rect = element.getBoundingClientRect();
+    return (
+      rect.top >= 0 &&
+      rect.left >= 0 &&
+      rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+      rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+    );
+  };
+
+  handleScroll = () => {
+    const componentIds = [
+      'hero',
+      'about-me',
+      'lasso',
+      'pacific-arc',
+      'pomona-pipe-products',
+      'courtside-gamble',
+      'social-media',
+    ];
+
+    componentIds.forEach((componentId) => {
+      const element = document.getElementById(componentId);
+      const currentRouteHash = this.$route.hash;
+      console.log(currentRouteHash);
+
+      if (element && this.isInViewport(element) && currentRouteHash !== `#${componentId}`) {
+        const route = { hash: componentId === 'hero' ? '' : componentId };
+        this.$router.replace(route);
+      }
+    });
+  };
+
+  mounted() {
+    window.addEventListener('scroll', this.handleScroll);
+  }
+
+  unmounted() {
+    window.removeEventListener('scroll', this.handleScroll);
+  }
+
+  scrollTo(id: string) {
+    window.removeEventListener('scroll', this.handleScroll);
+    this.toggleMobileDrawer();
+    this.$router.push({ hash: id }).catch(() => {});
+    setTimeout(() => {
+      window.addEventListener('scroll', this.handleScroll);
+    }, 2000);
+    // goTo(id, { duration: 1000, offset: -25, easing: 'easeInOutCubic' });
+  }
+
+  toggleMobileDrawer() {
+    this.mobileDrawer = !this.mobileDrawer;
+    const bodyTag = document.getElementsByTagName('body')[0];
+    if (this.mobileDrawer) {
+      bodyTag.style.overflow = 'hidden';
+      bodyTag.style.height = '100vh';
+    } else {
+      bodyTag.style.removeProperty('overflow');
+      bodyTag.style.removeProperty('height');
+    }
+  }
+}
+</script>
+
 <style lang="scss">
 //MY Name
 #profile-name {
   font-family: 'Mr De Haviland', 'Poppins', sans-serif;
-  font-size: 3.25rem;
+  font-size: 3rem;
   line-height: 1.25;
 }
 
 .v-app-bar {
+  padding-top: 0.5rem;
   a,
   button {
     opacity: 0.7;
@@ -74,48 +178,8 @@
   height: 100vh;
 }
 
-.v-app-bar {
-  padding-top: 0.5rem;
-}
-
 .nav-menu-item {
   font-size: 20px;
   margin: 0px 4px 0px 0px;
 }
 </style>
-
-<script lang="ts">
-import Vue from 'vue';
-import Component from 'vue-class-component';
-import { mdiMenu } from '@mdi/js';
-
-@Component({
-  components: {},
-})
-export default class Header extends Vue {
-  mdiMenu = mdiMenu;
-
-  mobileDrawer: boolean | null = null;
-
-  scrollTo(id: string) {
-    this.$vuetify.goTo(id, { duration: 1000, offset: -25, easing: 'easeInOutCubic' });
-  }
-
-  mobileScrollTo(id: string) {
-    this.toggleMobileDrawer();
-    this.$vuetify.goTo(id, { duration: 1000, offset: -25, easing: 'easeInOutCubic' });
-  }
-
-  toggleMobileDrawer() {
-    this.mobileDrawer = !this.mobileDrawer;
-    const bodyTag = document.getElementsByTagName('body')[0];
-    if (this.mobileDrawer) {
-      bodyTag.style.overflow = 'hidden';
-      bodyTag.style.height = '100vh';
-    } else {
-      bodyTag.style.removeProperty('overflow');
-      bodyTag.style.removeProperty('height');
-    }
-  }
-}
-</script>
