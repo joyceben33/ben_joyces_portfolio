@@ -5,5 +5,5 @@ declare module '*.vue' {
 }
 
 declare module 'vuetify/lib' {
-  import 'vuetify/types/lib'
+  import 'vuetify/types/lib';
 }

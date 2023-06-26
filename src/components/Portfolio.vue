@@ -18,7 +18,15 @@
             xl="12"
             class="py-lg-12 py-xl-12 py-6"
           >
-            <v-card :href="project.deployLink" target="_blank" tile hover outlined height="100%">
+            <v-card
+              :id="project.scrollTag"
+              :href="project.deployLink"
+              target="_blank"
+              tile
+              hover
+              outlined
+              height="100%"
+            >
               <v-img :src="project.image ? require(`../assets/${project.image}`) : ''" height="250px"></v-img>
               <v-container>
                 <v-card-title>{{ project.name }}</v-card-title>
@@ -122,12 +130,13 @@ import {
 /* @ts-ignore no-unused-vars */
 import type { IProject } from '@/types/project';
 /* Docs for Simple-icons https://simpleicons.org/ */
-@Component({})
+@Component
 export default class Portfolio extends Vue {
   projects: IProject[] = [
     {
       name: 'LASSO',
       isOrg: true,
+      scrollTag: 'lasso',
       description: `LASSO is a SaaS company, that sells software to companies in the live event industry. In my role here I worked with four other engineers, one UI/UX designer and one Product Owner. I played a role in the development of two different products from the ground up, which involved constant communication between the Product Owner and the engineering team. My responsibilities as a Software Engineer III were database development, api development, and front end development. Some of the individual contributions include creating a private component library utilizing GitHub’s Private NPM Registry, developing a real-time collaborative note editing tool with TalkJs, CRUD api routes that leveraged Zod Schema pattern matching, Casbin for permissions, and Sequelize as our ORM.`,
       image: 'lasso_screenshot.png',
       deployLink: 'https://www.lasso.io/',
@@ -208,6 +217,7 @@ export default class Portfolio extends Vue {
     {
       name: 'Pacific Arc, Inc.',
       isOrg: true,
+      scrollTag: 'pacific-arc',
       description:
         'Pacific Arc, Inc. is an architectural design tool wholesaler. In my role here I helped build an internal web application that provided tools to help with different workflows within the business. Some of the workflows / features I developed were order fulfillment, order analytics, order logistics, & inventory management. In addition to being an engineer on the product team, I also held responsibilities in their dev-ops department. Some of the dev-ops contributions include AWS Cognito & IAM User Management, setting up a CI/CD pipeline, & migrating Docker Image from Linux to Linux 2.',
       image: 'pacific_arc_screenshot.png',
@@ -284,6 +294,7 @@ export default class Portfolio extends Vue {
     {
       name: 'Pomona Pipe Products',
       isOrg: true,
+      scrollTag: 'pomona-pipe-products',
       description: `Pomona Pipe Products, Inc. is a civil engineering firm specializing in bridges and environmental construction. The company services a wide range of private businesses, municipalities, and state Departments of Transportation. In my role as a full-stack developer, I helped engineer the company's public-facing web application for marketing their products and services. The stack consists of a Serverless Node API, AWS S3 Buckets, AWS CloudFront CDN, a Headless CMS (Prismic.io), Algolia Search Engine, and a server-side rendering web application. In addition I have also worked to improve the company's search engine rankings by optimizing meta data and forming a link-building strategy through social media.`,
       image: 'pomona_screenshot.png',
       deployLink: 'https://pomonapipeproducts.com/',
@@ -359,6 +370,7 @@ export default class Portfolio extends Vue {
     {
       name: 'Courtside Gamble',
       isOrg: false,
+      scrollTag: 'courtside-gamble',
       description:
         'In an Agile setting with one member (myself) and a 7 day sprint cycle. Courtside Gamble is an NBA betting app that streams real-time scores, plays, and payouts as the game plays out. It allows multiple clients to experience the same game at the same time, just as they would in real-life.',
       image: 'courtside_gamble.png',

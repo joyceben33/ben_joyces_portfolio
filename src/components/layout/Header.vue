@@ -3,9 +3,9 @@
     <div>
       <v-app-bar-nav-icon default="mdiMenu" @click.stop="toggleMobileDrawer()"></v-app-bar-nav-icon>
       <v-overlay @click.native="toggleMobileDrawer()" :value="mobileDrawer"></v-overlay>
-      <v-navigation-drawer light v-model="mobileDrawer" app fixed hide-overlay temporary>
+      <v-navigation-drawer light v-model="mobileDrawer" width="300" app fixed hide-overlay temporary>
         <v-list>
-          <v-list-item @click="scrollTo('#about')">
+          <v-list-item @click="scrollTo('#about-me')">
             <v-list-item-icon>
               <v-icon>{{ 'mdi-account' }}</v-icon>
             </v-list-item-icon>
@@ -13,14 +13,34 @@
               <v-list-item-title>About Me</v-list-item-title>
             </v-list-item-content>
           </v-list-item>
-          <v-list-item @click="scrollTo('#portfolio')">
+          <!-- TODO: https://v2.vuetifyjs.com/en/components/lists/#sub-group -->
+          <v-list-group prepend-icon="mdi-folder">
+            <template v-slot:activator>
+              <v-list-item-content>
+                <v-list-item-title>Projects</v-list-item-title>
+              </v-list-item-content>
+            </template>
+            <v-list-item
+              v-for="projectLink in projectLinks"
+              :key="projectLink.name"
+              @click="scrollTo(`#${projectLink.scrollHash}`)"
+            >
+              <v-list-item-icon>
+                <v-icon>{{ 'mdi-domain' }}</v-icon>
+              </v-list-item-icon>
+              <v-list-item-content>
+                <v-list-item-title>{{ projectLink.name }}</v-list-item-title>
+              </v-list-item-content>
+            </v-list-item>
+          </v-list-group>
+          <!-- <v-list-item @click="scrollTo('#portfolio')">
             <v-list-item-icon>
               <v-icon>{{ 'mdi-folder' }}</v-icon>
             </v-list-item-icon>
             <v-list-item-content>
               <v-list-item-title>Portfolio</v-list-item-title>
             </v-list-item-content>
-          </v-list-item>
+          </v-list-item> -->
           <v-list-item @click="scrollTo('#footer-social')">
             <v-list-item-icon>
               <v-icon>{{ 'mdi-account-group' }}</v-icon>
@@ -57,6 +77,11 @@ import Vue from 'vue';
 import Component from 'vue-class-component';
 import { mdiMenu } from '@mdi/js';
 
+type ProjectLink = {
+  name: string;
+  scrollHash: string;
+};
+
 @Component({
   components: {},
 })
@@ -65,9 +90,17 @@ export default class Header extends Vue {
 
   mobileDrawer: boolean | null = null;
 
+  projectLinks: ProjectLink[] = [
+    { name: 'LASSO', scrollHash: 'lasso' },
+    { name: 'Pacific Arc', scrollHash: 'pacific-arc' },
+    { name: 'Pomona Pipe Products', scrollHash: 'pomona-pipe-products' },
+    { name: 'Courtside Gamble', scrollHash: 'courtside-gamble' },
+  ];
+
   scrollTo(id: string) {
     this.toggleMobileDrawer();
-    this.$vuetify.goTo(id, { duration: 1000, offset: -25, easing: 'easeInOutCubic' });
+    this.$router.push({ hash: id });
+    // goTo(id, { duration: 1000, offset: -25, easing: 'easeInOutCubic' });
   }
 
   toggleMobileDrawer() {
@@ -93,6 +126,7 @@ export default class Header extends Vue {
 }
 
 .v-app-bar {
+  padding-top: 0.5rem;
   a,
   button {
     opacity: 0.7;
@@ -107,10 +141,6 @@ export default class Header extends Vue {
 
 .v-overlay {
   height: 100vh;
-}
-
-.v-app-bar {
-  padding-top: 0.5rem;
 }
 
 .nav-menu-item {

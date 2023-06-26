@@ -7,6 +7,7 @@ interface ITechnology {
 export interface IProject {
   name: string;
   isOrg: boolean;
+  scrollTag: string;
   description: string;
   image: string;
   deployLink: string;

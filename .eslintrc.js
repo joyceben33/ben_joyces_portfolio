@@ -8,7 +8,7 @@ module.exports = {
     '@vue/airbnb',
     '@vue/typescript',
     'prettier/@typescript-eslint',
-    'plugin:prettier/recommended'
+    'plugin:prettier/recommended',
   ],
   parserOptions: {
     parser: '@typescript-eslint/parser',
@@ -18,6 +18,5 @@ module.exports = {
   rules: {
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
-
   },
 };

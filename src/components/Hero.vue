@@ -5,7 +5,8 @@
         <v-container>
           <v-row class="text-center">
             <v-col>
-              <span id="typer-constant">Who Are You?</span>
+              <!-- Who Are You? -->
+              <span id="typer-constant">Describe Yourself?</span>
               <h1>
                 <vue-typer
                   class="d-block d-sm-inline"
