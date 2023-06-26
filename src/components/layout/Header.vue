@@ -111,7 +111,6 @@ export default class Header extends Vue {
     componentIds.forEach((componentId) => {
       const element = document.getElementById(componentId);
       const currentRouteHash = this.$route.hash;
-      console.log(currentRouteHash);
 
       if (element && this.isInViewport(element) && currentRouteHash !== `#${componentId}`) {
         const route = { hash: componentId === 'hero' ? '' : componentId };
@@ -135,7 +134,6 @@ export default class Header extends Vue {
     setTimeout(() => {
       window.addEventListener('scroll', this.handleScroll);
     }, 2000);
-    // goTo(id, { duration: 1000, offset: -25, easing: 'easeInOutCubic' });
   }
 
   toggleMobileDrawer() {
