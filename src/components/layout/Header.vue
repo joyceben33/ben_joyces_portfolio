@@ -5,7 +5,7 @@
       <v-overlay @click.native="toggleMobileDrawer()" :value="mobileDrawer"></v-overlay>
       <v-navigation-drawer light v-model="mobileDrawer" width="300" app fixed hide-overlay temporary>
         <v-list>
-          <v-list-item @click="scrollTo('#about-me')">
+          <v-list-item @click="scrollTo('about-me')">
             <v-list-item-icon>
               <v-icon>{{ 'mdi-account' }}</v-icon>
             </v-list-item-icon>
@@ -14,7 +14,7 @@
             </v-list-item-content>
           </v-list-item>
           <!-- TODO: https://v2.vuetifyjs.com/en/components/lists/#sub-group -->
-          <v-list-group prepend-icon="mdi-folder">
+          <v-list-group prepend-icon="mdi-folder" no-action>
             <template v-slot:activator>
               <v-list-item-content>
                 <v-list-item-title>Projects</v-list-item-title>
@@ -23,25 +23,14 @@
             <v-list-item
               v-for="projectLink in projectLinks"
               :key="projectLink.name"
-              @click="scrollTo(`#${projectLink.scrollHash}`)"
+              @click="scrollTo(projectLink.scrollHash)"
             >
-              <v-list-item-icon>
-                <v-icon>{{ 'mdi-domain' }}</v-icon>
-              </v-list-item-icon>
               <v-list-item-content>
                 <v-list-item-title>{{ projectLink.name }}</v-list-item-title>
               </v-list-item-content>
             </v-list-item>
           </v-list-group>
-          <!-- <v-list-item @click="scrollTo('#portfolio')">
-            <v-list-item-icon>
-              <v-icon>{{ 'mdi-folder' }}</v-icon>
-            </v-list-item-icon>
-            <v-list-item-content>
-              <v-list-item-title>Portfolio</v-list-item-title>
-            </v-list-item-content>
-          </v-list-item> -->
-          <v-list-item @click="scrollTo('#footer-social')">
+          <v-list-item @click="scrollTo('social-media')">
             <v-list-item-icon>
               <v-icon>{{ 'mdi-account-group' }}</v-icon>
             </v-list-item-icon>
@@ -97,9 +86,55 @@ export default class Header extends Vue {
     { name: 'Courtside Gamble', scrollHash: 'courtside-gamble' },
   ];
 
+  // Check if element is in the visible viewport
+  isInViewport = (element: HTMLElement) => {
+    const rect = element.getBoundingClientRect();
+    return (
+      rect.top >= 0 &&
+      rect.left >= 0 &&
+      rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+      rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+    );
+  };
+
+  handleScroll = () => {
+    const componentIds = [
+      'hero',
+      'about-me',
+      'lasso',
+      'pacific-arc',
+      'pomona-pipe-products',
+      'courtside-gamble',
+      'social-media',
+    ];
+
+    componentIds.forEach((componentId) => {
+      const element = document.getElementById(componentId);
+      const currentRouteHash = this.$route.hash;
+      console.log(currentRouteHash);
+
+      if (element && this.isInViewport(element) && currentRouteHash !== `#${componentId}`) {
+        const route = { hash: componentId === 'hero' ? '' : componentId };
+        this.$router.replace(route);
+      }
+    });
+  };
+
+  mounted() {
+    window.addEventListener('scroll', this.handleScroll);
+  }
+
+  unmounted() {
+    window.removeEventListener('scroll', this.handleScroll);
+  }
+
   scrollTo(id: string) {
+    window.removeEventListener('scroll', this.handleScroll);
     this.toggleMobileDrawer();
-    this.$router.push({ hash: id });
+    this.$router.push({ hash: id }).catch(() => {});
+    setTimeout(() => {
+      window.addEventListener('scroll', this.handleScroll);
+    }, 2000);
     // goTo(id, { duration: 1000, offset: -25, easing: 'easeInOutCubic' });
   }
 
