@@ -367,48 +367,6 @@ export default class Portfolio extends Vue {
         },
       ],
     },
-    {
-      name: 'Courtside Gamble',
-      isOrg: false,
-      scrollTag: 'courtside-gamble',
-      description:
-        'In an Agile setting with one member (myself) and a 7 day sprint cycle. Courtside Gamble is an NBA betting app that streams real-time scores, plays, and payouts as the game plays out. It allows multiple clients to experience the same game at the same time, just as they would in real-life.',
-      image: 'courtside_gamble.png',
-      deployLink: 'https://admiring-neumann-0f0f2b.netlify.app/',
-      repoLink: 'https://github.com/joyceben33/Sports-Betting-App',
-      technologies: [
-        {
-          name: 'Javascript',
-          icon: siJavascript.path,
-          docsLink: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript',
-        },
-        {
-          name: 'React.js',
-          icon: siReact.path,
-          docsLink: 'https://reactjs.org/',
-        },
-        {
-          name: 'Redux.js',
-          icon: siRedux.path,
-          docsLink: 'https://redux.js.org/',
-        },
-        {
-          name: 'Node.js',
-          icon: siNodedotjs.path,
-          docsLink: 'https://nodejs.org/en/',
-        },
-        {
-          name: 'Socket.io',
-          icon: siSocketdotio.path,
-          docsLink: 'https://socket.io/',
-        },
-        {
-          name: 'MongoDB',
-          icon: siMongodb.path,
-          docsLink: 'https://www.mongodb.com/',
-        },
-      ],
-    },
   ];
 
   siGithub = siGithub;

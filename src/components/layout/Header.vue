@@ -14,10 +14,10 @@
             </v-list-item-content>
           </v-list-item>
           <!-- TODO: https://v2.vuetifyjs.com/en/components/lists/#sub-group -->
-          <v-list-group prepend-icon="mdi-folder" no-action>
+          <v-list-group prepend-icon="mdi-domain" no-action>
             <template v-slot:activator>
               <v-list-item-content>
-                <v-list-item-title>Projects</v-list-item-title>
+                <v-list-item-title>Experience</v-list-item-title>
               </v-list-item-content>
             </template>
             <v-list-item
@@ -83,7 +83,6 @@ export default class Header extends Vue {
     { name: 'LASSO', scrollHash: 'lasso' },
     { name: 'Pacific Arc', scrollHash: 'pacific-arc' },
     { name: 'Pomona Pipe Products', scrollHash: 'pomona-pipe-products' },
-    { name: 'Courtside Gamble', scrollHash: 'courtside-gamble' },
   ];
 
   // Check if element is in the visible viewport
