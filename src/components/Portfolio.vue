@@ -29,11 +29,14 @@
             >
               <v-img :src="project.image ? require(`../assets/${project.image}`) : ''" height="250px"></v-img>
               <v-container>
-                <v-card-title>{{ project.name }}</v-card-title>
+                <div class="my-2">
+                  <v-card-title>{{ project.name }}</v-card-title>
+                </div>
+                <v-card-subtitle class="font-weight-medium">Description:</v-card-subtitle>
                 <v-card-text>{{ project.description }}</v-card-text>
                 <v-divider class="mx-4"></v-divider>
                 <!-- Technologies Used -->
-                <v-card-title>Technologies Used:</v-card-title>
+                <v-card-subtitle class="font-weight-medium">Technologies Used:</v-card-subtitle>
                 <v-card-actions class="flex-wrap">
                   <v-btn
                     v-for="tech in project.technologies"
@@ -49,7 +52,9 @@
                 </v-card-actions>
                 <v-divider class="mx-4"></v-divider>
                 <!-- Code Repository -->
-                <v-card-title>{{ project.isOrg ? `Organization's Repository:` : 'Code Repository:' }}</v-card-title>
+                <v-card-subtitle class="font-weight-medium">{{
+                  project.isOrg ? `Organization's Repository:` : 'Code Repository:'
+                }}</v-card-subtitle>
                 <v-card-actions>
                   <v-btn icon :href="project.repoLink" target="_blank">
                     <v-icon>{{ siGithub.path }}</v-icon>
@@ -109,16 +114,12 @@ import {
   siAwslambda,
   siServerless,
   siJest,
-  siReact,
   siGithub,
-  siMongodb,
-  siSocketdotio,
   siPostgresql,
   siAmazonec2,
   siDocker,
   siVuedotjs,
   siQuasar,
-  siRedux,
   siBootstrap,
   siSequelize,
   siMysql,
